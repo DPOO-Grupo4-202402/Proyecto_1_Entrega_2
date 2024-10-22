@@ -8,6 +8,7 @@ public abstract class Usuario {
 	protected String nombre;
 	protected String email;
 	protected String contrasenia;
+	
 	protected ArrayList<Progreso> progresos;
 	protected ArrayList<LearningPath> learningPaths;
 	
@@ -35,6 +36,20 @@ public abstract class Usuario {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
+	
+	
+	public Usuario(int id, String nombre, String email, String contrasenia) {
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+		this.contrasenia = contrasenia;
+		this.progresos = new ArrayList<Progreso>();
+		this.learningPaths = new ArrayList<LearningPath>();
+	}
+	
+	
+	
+	        
 	
 	
 }

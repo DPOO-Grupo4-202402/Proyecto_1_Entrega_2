@@ -71,4 +71,54 @@ public class LearningPath {
 	}
 	
 	
+	// Constructor completo
+		public LearningPath(int idRuta, String titulo, String descripcion, String objetivos, String dificultad) {
+			this.idRuta = idRuta;
+			this.titulo = titulo;
+			this.descripcion = descripcion;
+			this.objetivos = objetivos;
+			this.dificultad = dificultad;
+			this.resenias = new ArrayList<Resenia>();  
+			this.actividades = new ArrayList<Actividad>();
+			this.progresos = new ArrayList<Progreso>();
+			this.usuarios = new ArrayList<Usuario>();
+		}
+		
+		// Constructor por defecto
+		public LearningPath() {
+			this.resenias = new ArrayList<Resenia>();
+			this.actividades = new ArrayList<Actividad>();
+			this.progresos = new ArrayList<Progreso>();
+			this.usuarios = new ArrayList<Usuario>();
+		}
+
+
+		// Métodos para agregar y eliminar reseñas
+		public void agregarResenia(Resenia resenia) {
+			this.resenias.add(resenia);
+		}
+
+		public void eliminarResenia(Resenia resenia) {
+			this.resenias.remove(resenia);
+		}
+
+		// Métodos para agregar y eliminar actividades
+		public void agregarActividad(Actividad actividad) {
+			this.actividades.add(actividad);
+		}
+
+		public void eliminarActividad(Actividad actividad) {
+			this.actividades.remove(actividad);
+		}
+
+		// Métodos para agregar y eliminar usuarios
+		public void agregarUsuario(Usuario usuario) {
+			this.usuarios.add(usuario);
+		}
+
+		public void eliminarUsuario(Usuario usuario) {
+			this.usuarios.remove(usuario);
+		}
+
+	
 }

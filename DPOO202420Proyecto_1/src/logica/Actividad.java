@@ -83,5 +83,55 @@ public abstract class Actividad {
 		this.learningPaths = learningPaths;
 	}
 	
+	//Metodos para manejar las actividades previas.
+	public void agregarActividad(Actividad actividad) {
+		if (!actividadesPrevias.contains(actividad)) {
+			actividadesPrevias.add(actividad);
+		}
+	}
+	
+	public void eliminarActividad(Actividad actividad) {
+		actividadesPrevias.remove(actividad);
+	}
+	
+	//Metodos de verificacion.
+	public boolean esCompletada() {
+		return this.resultado != null && !this.resultado.equals("Pendiente");
+	}
+	
+	public boolean sePuedeHacer() {
+		for(Actividad previa : actividadesPrevias) {
+			if (!previa.esCompletada()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	//Metodo para manejar los resultados.
+	public void asignarResultado(String resultado) {
+		this.resultado = resultado;
+	}
+	
+	public String obtenerResultado() {
+		return this.resultado;
+	}
+	
+	//Metodo abstracto a ser implementado por las clases que heredan.
+	public abstract void ejecutar();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

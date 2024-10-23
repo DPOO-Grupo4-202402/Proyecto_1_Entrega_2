@@ -8,6 +8,11 @@ public class Progreso {
 	private Date fechaCompletado;
 	private String resultado;
 	
+	public Progreso(Date fechaIniciado, Date fechaCompletado, String resultado) {
+		this.fechaIniciado = fechaIniciado;
+		this.fechaCompletado = fechaCompletado;
+		this.resultado = resultado;
+	}
 	public Date getFechaIniciado() {
 		return fechaIniciado;
 	}

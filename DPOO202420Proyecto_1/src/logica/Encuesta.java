@@ -1,16 +1,16 @@
 package logica;
 
+import java.util.ArrayList;
+
 public class Encuesta extends Actividad{
+	
 	private int duracion;
 
-	public Encuesta(int idActividad, String titulo, String descripcion, String objetivos, String dificultad, String dificultadEsperada, String resultado, int duracion) {
-		this.idActividad = idActividad;
-		this.titulo = titulo;
-		this.descripcion = descripcion;
-		this.objetivos = objetivos;
-		this.dificultad = dificultad;
-		this.dificultadEsperada = dificultadEsperada;
-		this.resultado = resultado;
+	public Encuesta(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
+			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion) {
+		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado, resenias,
+				actividadesPrevias, learningPaths);
 		this.duracion = duracion;
 	}
 

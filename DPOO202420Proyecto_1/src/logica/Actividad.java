@@ -9,12 +9,24 @@ public abstract class Actividad {
 	protected String descripcion;
 	protected String objetivos;
 	protected String dificultad;
-	protected String dificultadEsperada;
 	protected String resultado;
 	protected ArrayList<Resenia> resenias;
 	protected ArrayList<Actividad> actividadesPrevias;
 	protected ArrayList<LearningPath> learningPaths;
 	
+	public Actividad(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
+			 String resultado, ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths) {
+		this.idActividad = idActividad;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.objetivos = objetivos;
+		this.dificultad = dificultad;
+		this.resultado = resultado;
+		this.resenias = new ArrayList<Resenia>();
+		this.actividadesPrevias = new ArrayList<Actividad>();
+		this.learningPaths = new ArrayList<LearningPath>();
+	}
 	public int getIdActividad() {
 		return idActividad;
 	}
@@ -45,12 +57,7 @@ public abstract class Actividad {
 	public void setDificultad(String dificultad) {
 		this.dificultad = dificultad;
 	}
-	public String getDificultadEsperada() {
-		return dificultadEsperada;
-	}
-	public void setDificultadEsperada(String dificultadEsperada) {
-		this.dificultadEsperada = dificultadEsperada;
-	}
+
 	public String getResultado() {
 		return resultado;
 	}

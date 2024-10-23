@@ -1,18 +1,17 @@
 package logica;
 
+import java.util.ArrayList;
+
 public class RevisarRecurso extends Actividad{
 	
 	private String tipo;
 
-	public RevisarRecurso(int idActividad, String titulo, String descripcion, String objetivos, String dificultad, String dificultadEsperada, String resultado, String tipo) {
-		this.idActividad = idActividad;
-		this.titulo = titulo;
-		this.descripcion = descripcion;
-		this.objetivos = objetivos;
-		this.dificultad = dificultad;
-		this.dificultadEsperada = dificultadEsperada;
-		this.resultado = resultado;
-		this.setTipo(tipo);
+	public RevisarRecurso(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
+			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, String tipo) {
+		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado, resenias,
+				actividadesPrevias, learningPaths);
+		this.tipo = tipo;
 	}
 
 	public String getTipo() {

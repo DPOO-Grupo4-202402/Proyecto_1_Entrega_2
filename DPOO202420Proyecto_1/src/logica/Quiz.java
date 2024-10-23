@@ -1,21 +1,21 @@
 package logica;
 
+import java.util.ArrayList;
+
 public class Quiz extends Actividad{
 
 	private int calificacionMinima;
 	private int duracion;
-	
-	public Quiz(int idActividad, String titulo, String descripcion, String objetivos, String dificultad, String dificultadEsperada, String resultado, int calificacionMinima, int duracion) {
-		this.idActividad = idActividad;
-		this.titulo = titulo;
-		this.descripcion = descripcion;
-		this.objetivos = objetivos;
-		this.dificultad = dificultad;
-		this.dificultadEsperada = dificultadEsperada;
-		this.resultado = resultado;
+	private int calificacionObtenida;
+
+	public Quiz(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
+			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion, int calificacionMinima, int calificacionObtenida) {
+		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado, resenias,
+				actividadesPrevias, learningPaths);
+		this.duracion = duracion;
 		this.calificacionMinima = calificacionMinima;
-		this.setDuracion(duracion);
-	
+		this.setCalificacionObtenida(calificacionObtenida);
 	}
 
 	public int getCalificacionMinima() {
@@ -32,6 +32,14 @@ public class Quiz extends Actividad{
 
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
+	}
+
+	public int getCalificacionObtenida() {
+		return calificacionObtenida;
+	}
+
+	public void setCalificacionObtenida(int calificacionObtenida) {
+		this.calificacionObtenida = calificacionObtenida;
 	}
 	
 	

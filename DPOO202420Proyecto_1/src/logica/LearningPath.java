@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class LearningPath {
 	
@@ -93,32 +94,84 @@ public class LearningPath {
 		}
 
 
-		// Métodos para agregar y eliminar reseñas
+		// Métodos para manejar resenias.
 		public void agregarResenia(Resenia resenia) {
-			this.resenias.add(resenia);
+			if (resenia != null && !this.resenias.contains(resenia)) {
+				this.resenias.add(resenia);
+			} else {
+				System.out.println("La resenia ya existe.");
+			}
 		}
 
 		public void eliminarResenia(Resenia resenia) {
-			this.resenias.remove(resenia);
+			if (this.resenias.contains(resenia)) {
+				this.resenias.add(resenia);
+			} else {
+				System.out.println("La resenia no existe");
+			}
+		}
+		
+		public ArrayList<Resenia> listaDeResenias(){
+			return this.resenias;
 		}
 
-		// Métodos para agregar y eliminar actividades
+		// Métodos para manejar actividades.
 		public void agregarActividad(Actividad actividad) {
-			this.actividades.add(actividad);
+			if (actividad != null && !this.actividades.contains(actividad)) {
+				this.actividades.add(actividad);
+			} else {
+				System.out.println("Esta actividad ya esta en el Learning Path. ");
+			}
 		}
 
 		public void eliminarActividad(Actividad actividad) {
-			this.actividades.remove(actividad);
+			if (this.actividades.contains(actividad)) {
+				this.actividades.remove(actividad);
+			} else {
+				System.out.println("La actividad no existe en el Learnign Path.");
+			}
+		}
+		
+		public Actividad obtenerActividad(int idActividad) {
+			for (Actividad actividad : this.actividades) {
+				if (actividad.getIdActividad() == idActividad) {
+					return actividad;
+				}
+			}
+			System.out.println("No se encontro la actividad con el ID especificado.");
+			return null;
 		}
 
 		// Métodos para agregar y eliminar usuarios
 		public void agregarUsuario(Usuario usuario) {
-			this.usuarios.add(usuario);
+			if (!this.usuarios.contains(usuario)) {
+				this.usuarios.add(usuario);
+				this.progresos.add(new Progreso(null, null, "En progreso"));
+			}
 		}
 
 		public void eliminarUsuario(Usuario usuario) {
-			this.usuarios.remove(usuario);
+			int index = this.usuarios.indexOf(usuario);
+			if (index != -1) {
+				this.usuarios.remove(index);
+				this.progresos.remove(index);
+			}
 		}
-
-	
+		
+		public Progreso obtenerProgresoDeUsuario(Usuario usuario) {
+			int index = this.usuarios.indexOf(usuario);
+			if (index != -1 ) {
+				return this.progresos.get(index);
+			}
+		return null;
+		}
+		
+		public void actualizarProgresoDeUsuario(Usuario usuario, String nuevoResultado, Date fechaCompletado) {
+			int index = this.usuarios.indexOf(usuario);
+			if (index != -1) {
+				Progreso progreso = this.progresos.get(index);
+				progreso.setResultado(nuevoResultado);
+				progreso.setFechaCompletado(fechaCompletado);
+			}
+		}
 }

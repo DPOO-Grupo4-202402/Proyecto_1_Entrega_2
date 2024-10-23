@@ -36,6 +36,7 @@ public abstract class Pregunta {
 		this.puntaje = puntaje;
 	}
 	
-	
-	
+	//Metodos abstractos.
+	public abstract boolean esCorrecta();
+	public abstract int calcularPuntaje();
 }

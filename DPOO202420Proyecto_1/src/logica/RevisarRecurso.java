@@ -21,5 +21,22 @@ public class RevisarRecurso extends Actividad{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public void marcarRevisado() {
+		this.resultado = "Revisado";
+	}
+	
+	public String obtenerResultado() {
+		return this.resultado;
+	}
+
+	@Override
+	public void ejecutar() {
+		// Logica de ejecucion.
+		marcarRevisado();
+		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
+	}
+	
+	
 
 }

@@ -27,4 +27,18 @@ public class PreguntaAbierta extends Pregunta{
 		this.respuestaEstudiante = respuestaEstudiante;
 	}
 
+	@Override
+	public boolean esCorrecta() {
+		return this.respuestaEstudiante.equalsIgnoreCase(respuestaCorrecta);
+	}
+
+	@Override
+	public int calcularPuntaje() {
+		if (respuestaEstudiante.equals(respuestaCorrecta)){
+			return puntaje;
+		} else {
+			return 0;
+		}
+	}
+
 }

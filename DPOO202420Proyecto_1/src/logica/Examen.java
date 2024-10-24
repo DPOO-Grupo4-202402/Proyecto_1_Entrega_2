@@ -8,6 +8,7 @@ public class Examen extends Actividad{
 	private double calificacionObtenida;
 	private double calificacionMinima;
 	private String estado;
+	private ArrayList<PreguntaAbierta> preguntas;
 
 	public Examen(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
 			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
@@ -18,9 +19,18 @@ public class Examen extends Actividad{
 		this.setEstado("Enviado");
 		this.setCalificacionObtenida(calificacionObtenida);
 		this.setCalificacionMinima(calificacionMinima);
+		this.setPreguntas(new ArrayList<>());
 	}
 	
 	//Getters y Setters.
+	public ArrayList<PreguntaAbierta> getPreguntas() {
+		return preguntas;
+	}
+
+	public void setPreguntas(ArrayList<PreguntaAbierta> preguntas) {
+		this.preguntas = preguntas;
+	}
+	
 	public int getDuracion() {
 		return duracion;
 	}
@@ -80,4 +90,6 @@ public class Examen extends Actividad{
 		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
 		
 	}
+
+	
 }

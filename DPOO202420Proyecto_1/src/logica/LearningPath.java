@@ -105,7 +105,7 @@ public class LearningPath {
 
 		public void eliminarResenia(Resenia resenia) {
 			if (this.resenias.contains(resenia)) {
-				this.resenias.add(resenia);
+				this.resenias.remove(resenia);
 			} else {
 				System.out.println("La resenia no existe");
 			}

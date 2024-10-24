@@ -39,5 +39,26 @@ public class Recomendador {
 		this.estudiantes = estudiantes;
 	}
 	
+	public ArrayList<LearningPath> recomendarLearningPaths(Estudiante estudiante, ArrayList<LearningPath> learningPahsDisponibles){
+		ArrayList<LearningPath> learningPathsRecomendados = new ArrayList<>();
+		
+		for(LearningPath lp : learningPahsDisponibles) {
+			if(contieneIntereses(estudiante.getIntereses(), lp.getDescripcion())) {
+				learningPathsRecomendados.add(lp);
+			}
+		}
+		return learningPathsRecomendados;
+	}
 	
+	public boolean contieneIntereses(String intereses, String descripcionLearningPath) {
+		String[] listaIntereses = intereses.toLowerCase().split(",");//Los intereses os estudiantes los deben agregar separados por comas.
+		String descripcion = descripcionLearningPath.toLowerCase();
+		
+		for (String interes : listaIntereses) {
+			if (descripcion.contains(interes.trim())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

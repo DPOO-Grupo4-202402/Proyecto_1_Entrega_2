@@ -127,6 +127,29 @@ public abstract class Actividad {
 	
 	
 	
+	//-------------------------------------------------------------------------------------------------------------------
+	
+	// Métodos para manejar resenias.
+	public void agregarResenia(Resenia resenia) throws Exception {
+		if (resenia != null && !this.resenias.contains(resenia)) {
+			this.resenias.add(resenia);
+		} else {
+			throw new Exception("La resenia ya existe.");
+		}
+	}
+
+	public void eliminarResenia(Resenia resenia) throws Exception {
+		if (this.resenias.contains(resenia)) {
+			this.resenias.remove(resenia);
+		} else {
+			throw new Exception("La resenia no existe");
+		}
+	}
+	
+	public ArrayList<Resenia> listaDeResenias(){
+		return this.resenias;
+	
+	
 	
 	
 	

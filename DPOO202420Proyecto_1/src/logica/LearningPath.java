@@ -94,22 +94,8 @@ public class LearningPath {
 		}
 
 
-		// Métodos para manejar resenias.
-		public void agregarResenia(Resenia resenia) throws Exception {
-			if (resenia != null && !this.resenias.contains(resenia)) {
-				this.resenias.add(resenia);
-			} else {
-				throw new Exception("La resenia ya existe.");
-			}
-		}
+		// Métodos para manejar resenias. (ESTO SE MODIFICA, TOCA IMPLEMENTARLO CON ACTIVIDADES)
 
-		public void eliminarResenia(Resenia resenia) throws Exception {
-			if (this.resenias.contains(resenia)) {
-				this.resenias.remove(resenia);
-			} else {
-				throw new Exception("La resenia no existe");
-			}
-		}
 		
 		public ArrayList<Resenia> listaDeResenias(){
 			return this.resenias;
@@ -150,14 +136,7 @@ public class LearningPath {
 			throw new Exception("Usuario ya inscrito previamente en este Learning Path");
 		}
 
-		public void eliminarUsuario(Usuario usuario) throws Exception {
-			int index = this.usuarios.indexOf(usuario);
-			if (index != -1) {
-				this.usuarios.remove(index);
-				this.progresos.remove(index);
-			}
-			throw new Exception("Usuario inexistente en este Learning Path");
-		}
+
 		
 		public Progreso obtenerProgresoDeUsuario(Usuario usuario) throws Exception {
 			int index = this.usuarios.indexOf(usuario);
@@ -167,12 +146,5 @@ public class LearningPath {
 			throw new Exception("Usuario inexistente en este Learning Path");
 		}
 		
-		public void actualizarProgresoDeUsuario(Usuario usuario, String nuevoResultado, Date fechaCompletado) {
-			int index = this.usuarios.indexOf(usuario);
-			if (index != -1) {
-				Progreso progreso = this.progresos.get(index);
-				progreso.setResultado(nuevoResultado);
-				progreso.setFechaCompletado(fechaCompletado);
-			}
-		}
+
 }

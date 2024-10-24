@@ -105,4 +105,13 @@ public class Progreso {
 		
 	}
 	
+	public void actualizarProgresoDeUsuario(Usuario usuario, String nuevoResultado, Date fechaCompletado) {
+		int index = this.usuarios.indexOf(usuario);
+		if (index != -1) {
+			Progreso progreso = this.progresos.get(index);
+			progreso.setResultado(nuevoResultado);
+			progreso.setFechaCompletado(fechaCompletado);
+		}
+	}
+	
 }

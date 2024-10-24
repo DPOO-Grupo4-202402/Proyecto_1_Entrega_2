@@ -1,14 +1,19 @@
 package logica;
 
+import java.util.Date;
+
 public class Resenia {
-	
+
+	private Usuario autor;
 	private int rating;
 	private String comentario;
+	private Date fecha;
 	
-	public Resenia(int rating, String comentario) {
-		super();
+	public Resenia(int rating, String comentario, Usuario autor, Date fecha) {;
 		this.rating = rating;
 		this.comentario = comentario;
+		this.setAutor(autor);
+		this.setFecha(fecha);
 	}
 	
 	public int getRating() {
@@ -16,6 +21,9 @@ public class Resenia {
 	}
 	
 	public void setRating(int rating) {
+		if (rating < 1 || rating > 5) {
+			throw new IllegalArgumentException("La puntuacion debe estar entre 1 y 5.")
+		}
 		this.rating = rating;
 	}
 	
@@ -26,5 +34,24 @@ public class Resenia {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+
+	public Usuario getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 	
+	public String obtenerResenia() {
+		return "Autor: " + autor.getNombre()  + "Fecha: " + fecha.toString() + "\n" + "Rating: " + rating + "\n" + "Comentario: " + comentario;
+	}
 }

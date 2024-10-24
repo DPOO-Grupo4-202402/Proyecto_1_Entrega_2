@@ -95,19 +95,19 @@ public class LearningPath {
 
 
 		// Métodos para manejar resenias.
-		public void agregarResenia(Resenia resenia) {
+		public void agregarResenia(Resenia resenia) throws Exception {
 			if (resenia != null && !this.resenias.contains(resenia)) {
 				this.resenias.add(resenia);
 			} else {
-				System.out.println("La resenia ya existe.");
+				throw new Exception("La resenia ya existe.");
 			}
 		}
 
-		public void eliminarResenia(Resenia resenia) {
+		public void eliminarResenia(Resenia resenia) throws Exception {
 			if (this.resenias.contains(resenia)) {
 				this.resenias.remove(resenia);
 			} else {
-				System.out.println("La resenia no existe");
+				throw new Exception("La resenia no existe");
 			}
 		}
 		
@@ -116,54 +116,55 @@ public class LearningPath {
 		}
 
 		// Métodos para manejar actividades.
-		public void agregarActividad(Actividad actividad) {
+		public void agregarActividad(Actividad actividad) throws Exception {
 			if (actividad != null && !this.actividades.contains(actividad)) {
 				this.actividades.add(actividad);
 			} else {
-				System.out.println("Esta actividad ya esta en el Learning Path. ");
+				throw new Exception("Esta actividad ya está en el Learning Path. ");
 			}
 		}
 
-		public void eliminarActividad(Actividad actividad) {
+		public void eliminarActividad(Actividad actividad) throws Exception {
 			if (this.actividades.contains(actividad)) {
 				this.actividades.remove(actividad);
 			} else {
-				System.out.println("La actividad no existe en el Learnign Path.");
+				throw new Exception("La actividad no existe en el Learnign Path.");
 			}
 		}
 		
-		public Actividad obtenerActividad(int idActividad) {
+		public Actividad obtenerActividad(int idActividad) throws Exception {
 			for (Actividad actividad : this.actividades) {
 				if (actividad.getIdActividad() == idActividad) {
 					return actividad;
 				}
 			}
-			System.out.println("No se encontro la actividad con el ID especificado.");
-			return null;
+			throw new Exception("No se encontró la actividad con el ID especificado.");
 		}
 
 		// Métodos para agregar y eliminar usuarios
-		public void agregarUsuario(Usuario usuario) {
+		public void agregarUsuario(Usuario usuario) throws Exception {
 			if (!this.usuarios.contains(usuario)) {
 				this.usuarios.add(usuario);
 				this.progresos.add(new Progreso(null, null, "En progreso"));
 			}
+			throw new Exception("Usuario ya inscrito previamente en este Learning Path");
 		}
 
-		public void eliminarUsuario(Usuario usuario) {
+		public void eliminarUsuario(Usuario usuario) throws Exception {
 			int index = this.usuarios.indexOf(usuario);
 			if (index != -1) {
 				this.usuarios.remove(index);
 				this.progresos.remove(index);
 			}
+			throw new Exception("Usuario inexistente en este Learning Path");
 		}
 		
-		public Progreso obtenerProgresoDeUsuario(Usuario usuario) {
+		public Progreso obtenerProgresoDeUsuario(Usuario usuario) throws Exception {
 			int index = this.usuarios.indexOf(usuario);
 			if (index != -1 ) {
 				return this.progresos.get(index);
 			}
-		return null;
+			throw new Exception("Usuario inexistente en este Learning Path");
 		}
 		
 		public void actualizarProgresoDeUsuario(Usuario usuario, String nuevoResultado, Date fechaCompletado) {

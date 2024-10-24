@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class Actividad {
 
@@ -12,11 +13,13 @@ public abstract class Actividad {
 	protected String resultado;
 	protected ArrayList<Resenia> resenias;
 	protected ArrayList<Actividad> actividadesPrevias;
+	protected ArrayList<Actividad> actividadesExistentes;
 	protected ArrayList<LearningPath> learningPaths;
 	
+	//, ArrayList<Resenia> resenias, ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths
+	
 	public Actividad(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
-			 String resultado, ArrayList<Resenia> resenias,
-			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths) {
+			 String resultado) {
 		this.idActividad = idActividad;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -76,6 +79,12 @@ public abstract class Actividad {
 	public void setActividadesPrevias(ArrayList<Actividad> actividadesPrevias) {
 		this.actividadesPrevias = actividadesPrevias;
 	}
+	public ArrayList<Actividad> getActividadesExistentes() {
+		return actividadesExistentes;
+	}
+	public void setActividadesExistentes(ArrayList<Actividad> actividadesExistentes) {
+		this.actividadesExistentes = actividadesExistentes;
+	}
 	public ArrayList<LearningPath> getLearningPaths() {
 		return learningPaths;
 	}
@@ -84,13 +93,24 @@ public abstract class Actividad {
 	}
 	
 	//Metodos para manejar las actividades previas.
-	public void agregarActividad(Actividad actividad) {
-		if (!actividadesPrevias.contains(actividad)) {
-			actividadesPrevias.add(actividad);
+	public Actividad buscarActividadPreviaSugerida(int idActividad) throws Exception {
+		
+		for (Actividad actividadBuscada : this.actividadesExistentes) {
+			if (actividadBuscada.getIdActividad() == idActividad) {
+				return actividadBuscada;
+			}
+		}
+		throw new Exception("No existe la actividad previa");
+	}
+	
+	public void agregarActividadPreviaSugerida(int idActividad) throws Exception {
+	
+		if (!actividadesPrevias.contains(this.buscarActividadPreviaSugerida(idActividad))) {
+			actividadesPrevias.add(this.buscarActividadPreviaSugerida(idActividad));
 		}
 	}
 	
-	public void eliminarActividad(Actividad actividad) {
+	public void eliminarActividadPreviaSugerida(Actividad actividad) {
 		actividadesPrevias.remove(actividad);
 	}
 	
@@ -158,3 +178,4 @@ public abstract class Actividad {
 	
 	
 }
+}	

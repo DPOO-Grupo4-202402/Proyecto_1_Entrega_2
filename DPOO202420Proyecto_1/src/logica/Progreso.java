@@ -93,25 +93,15 @@ public class Progreso {
 		}
 		
 		if (totalActividades > 0) {
-			this.porcentajeCompletado = (actividadesCompletadas / (double) totalActividades) * 100;
+			this.porcentajeCompletado = (activadesCompletadas / (double) totalActividades) * 100;
 		} else {
 			this.porcentajeCompletado = 100.0; //Si no hay actividades se considera que esta completado.
 		}
 		
 		if (this.porcentajeCompletado == 100.0) {
 			this.fechaCompletado = new Date();
-			this.resultado = "Completado";	
+			this.resultado = "Completado";
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 	

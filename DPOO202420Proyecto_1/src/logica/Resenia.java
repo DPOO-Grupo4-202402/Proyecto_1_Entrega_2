@@ -22,7 +22,7 @@ public class Resenia {
 	
 	public void setRating(int rating) {
 		if (rating < 1 || rating > 5) {
-			throw new IllegalArgumentException("La puntuacion debe estar entre 1 y 5.")
+			throw new IllegalArgumentException("La puntuacion debe estar entre 1 y 5.");
 		}
 		this.rating = rating;
 	}

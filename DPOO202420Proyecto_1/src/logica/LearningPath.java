@@ -131,7 +131,7 @@ public class LearningPath {
 		public void agregarUsuario(Usuario usuario) throws Exception {
 			if (!this.usuarios.contains(usuario)) {
 				this.usuarios.add(usuario);
-				Progreso progreso = new Progreso(new Date(), usuario, this);
+				Progreso progreso = new Progreso(new Date(),	 usuario, this);
 				this.progresos.add(progreso);
 			}
 			throw new Exception("Usuario ya inscrito previamente en este Learning Path");

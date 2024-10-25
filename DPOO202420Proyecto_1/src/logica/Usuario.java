@@ -21,6 +21,7 @@ public abstract class Usuario {
 		this.learningPaths = new ArrayList<LearningPath>();
 	}
 	
+	//Getters y Setters.
 	public int getId() {
 		return id;
 	}
@@ -46,4 +47,29 @@ public abstract class Usuario {
 		this.contrasenia = contrasenia;
 	}
 	
+	public ArrayList<Progreso> getProgresos() {
+		return progresos;
+	}
+
+	public void setProgresos(ArrayList<Progreso> progresos) {
+		this.progresos = progresos;
+	}
+
+	public ArrayList<LearningPath> getLearningPaths() {
+		return learningPaths;
+	}
+
+	public void setLearningPaths(ArrayList<LearningPath> learningPaths) {
+		this.learningPaths = learningPaths;
+	}
+	
+	
+	//Metodos de agregacion.
+	public void agregarProgreso(Progreso progreso) {
+		this.progresos.add(progreso);
+	}
+	
+	public void agregarLearningPath(LearningPath learningPath) {
+		this.learningPaths.add(learningPath);
+	}
 }

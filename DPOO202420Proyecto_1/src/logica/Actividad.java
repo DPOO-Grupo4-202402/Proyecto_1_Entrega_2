@@ -148,13 +148,5 @@ public abstract class Actividad {
 	
 	public ArrayList<Resenia> listaDeResenias(){
 		return this.resenias;
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 }

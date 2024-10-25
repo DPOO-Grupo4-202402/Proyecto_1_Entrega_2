@@ -89,8 +89,4 @@ public class Quiz extends Actividad{
 		//Logica de ejecucion.
 		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
 	}
-
-	
-	
-	
 }

@@ -13,7 +13,7 @@ public abstract class Actividad {
 	protected String resultado;
 	protected ArrayList<Resenia> resenias;
 	protected ArrayList<Actividad> actividadesPrevias;
-	protected ArrayList<Actividad> actividadesExistentes;
+	static protected ArrayList<Actividad> actividadesExistentes = new ArrayList<Actividad>();
 	protected ArrayList<LearningPath> learningPaths;
 	
 	//, ArrayList<Resenia> resenias, ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths
@@ -83,7 +83,7 @@ public abstract class Actividad {
 		return actividadesExistentes;
 	}
 	public void setActividadesExistentes(ArrayList<Actividad> actividadesExistentes) {
-		this.actividadesExistentes = actividadesExistentes;
+		Actividad.actividadesExistentes = actividadesExistentes;
 	}
 	public ArrayList<LearningPath> getLearningPaths() {
 		return learningPaths;
@@ -95,7 +95,7 @@ public abstract class Actividad {
 	//Metodos para manejar las actividades previas.
 	public Actividad buscarActividadPreviaSugerida(int idActividad) throws Exception {
 		
-		for (Actividad actividadBuscada : this.actividadesExistentes) {
+		for (Actividad actividadBuscada : Actividad.actividadesExistentes) {
 			if (actividadBuscada.getIdActividad() == idActividad) {
 				return actividadBuscada;
 			}
@@ -108,10 +108,14 @@ public abstract class Actividad {
 		if (!actividadesPrevias.contains(this.buscarActividadPreviaSugerida(idActividad))) {
 			actividadesPrevias.add(this.buscarActividadPreviaSugerida(idActividad));
 		}
+		throw new Exception("La actividad previa con ese id ya existía en esta actividad");
 	}
 	
-	public void eliminarActividadPreviaSugerida(Actividad actividad) {
-		actividadesPrevias.remove(actividad);
+	public void eliminarActividadPreviaSugerida(int idActividad) throws Exception {
+		Actividad actividadExistente = this.buscarActividadPreviaSugerida(idActividad);
+		if (actividadesPrevias.contains(actividadExistente)) {
+			actividadesPrevias.remove(actividadExistente);
+		}
 	}
 	
 	//Metodos de verificacion.
@@ -168,6 +172,14 @@ public abstract class Actividad {
 	
 	public ArrayList<Resenia> listaDeResenias(){
 		return this.resenias;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 }	

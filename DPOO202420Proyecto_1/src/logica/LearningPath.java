@@ -16,6 +16,7 @@ public class LearningPath {
 	private ArrayList<Usuario> usuarios;
 	
 	
+	
 	public int getIdRuta() {
 		return idRuta;
 	}

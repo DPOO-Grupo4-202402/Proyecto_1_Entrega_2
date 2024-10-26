@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Tarea extends Actividad{
-	
+
 	private Date fechaEntrega;
 	private String estado;
 
 	public Tarea(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
 			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
 			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, Date fechaEntrega) {
-		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado, resenias,
-				actividadesPrevias, learningPaths);
+		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.fechaEntrega = fechaEntrega;
 		this.setEstado("Enviada");
 	}
@@ -24,20 +23,20 @@ public class Tarea extends Actividad{
 	public void setFechaEntrega(Date fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
-	
+
 	//Metodos para manejar entregas.
 	public boolean entregadaATiempo(Date fechaEntregaEstudiante) {
 		return fechaEntregaEstudiante.before(this.fechaEntrega);
 	}
-	
+
 	public void marcarExitosa() {
 		this.estado = "Exitosa";
 	}
-	
+
 	public void marcarNoExitosa() {
 		this.estado = "No exitosa";
 	}
-	
+
 	@Override
 	public void ejecutar() {
 		// logica de ejecucion.
@@ -51,5 +50,5 @@ public class Tarea extends Actividad{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
+
 }

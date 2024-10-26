@@ -44,8 +44,8 @@ public class ConsolaApp {
                 case 3 -> crearLearningPath(scanner);
                 case 4 -> inscribirEstudianteEnLearningPath(scanner);
                 case 5 -> verProgresoEstudiante(scanner);
-                case 6 -> guardarDatos();
-                case 7 -> cargarDatos();
+                //    case 6 -> guardarDatos();
+                //       case 7 -> cargarDatos();
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida, intenta de nuevo.");
             }
@@ -169,7 +169,8 @@ public class ConsolaApp {
     }
 
     //   private static void guardarDatos() {
-    //     try {
+    	   //      try {
+        	 //    	 SerializacionDeArchivo.guardarObjetoSerializable(estudiante, "Estudiantes.csv");
     //         PersistenciaDatos.guardarEstudiantes(estudiantes);
     //         PersistenciaDatos.guardarProfesores(profesores);
     //         PersistenciaDatos.guardarLearningPaths(learningPaths);
@@ -177,7 +178,7 @@ public class ConsolaApp {
     //    } catch (IOException e) {
     //       System.out.println("Error al guardar los datos: " + e.getMessage());
     //    }
-    // }
+    //  }
 
     //  private static void cargarDatos() {
     //     try {

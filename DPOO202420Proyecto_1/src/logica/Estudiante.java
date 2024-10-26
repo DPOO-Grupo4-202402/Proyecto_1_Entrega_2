@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.ArrayList;
+
 public class Estudiante extends Usuario{
 	
 	private String intereses;
@@ -34,6 +36,25 @@ public class Estudiante extends Usuario{
 			throw new Exception("No estas inscrito en el learning path.");
 		}
 	}
+	
+	public void mostrarProgreso() {
+	    System.out.println("Progreso de " + this.getNombre() + ":");
+	    for (LearningPath lp : this.learningPaths) {
+	        try {
+	            Progreso progreso = consultarProgreso(lp);
+	            System.out.println("Learning Path: " + lp.getTitulo());
+	            System.out.println("Progreso: " + progreso.getPorcentajeCompletado() + "%");
+	            
+	            for (Actividad actividad : lp.getActividades()) {
+	                String estado = actividad.esCompletada() ? "Completada" : "Pendiente";
+	                System.out.println(" - Actividad: " + actividad.getTitulo() + " [" + estado + "]");
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Error al consultar el progreso en " + lp.getTitulo() + ": " + e.getMessage());
+	        }
+	    }
+	}
+
 	
 	public void completarActividad(LearningPath learningPath, Actividad actividad, String resultado) throws Exception{
 		if (this.learningPaths.contains(learningPath)) {

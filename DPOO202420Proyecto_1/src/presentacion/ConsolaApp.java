@@ -19,6 +19,7 @@ public class ConsolaApp {
     private static List<Profesor> profesores = new ArrayList<>();
     private static List<Estudiante> estudiantes = new ArrayList<>();
     private static List<LearningPath> learningPaths = new ArrayList<>();
+    private Estudiante estudiante;
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +32,7 @@ public class ConsolaApp {
             System.out.println("3. Crear un Learning Path");
             System.out.println("4. Inscribir estudiante en un Learning Path");
             System.out.println("5. Ver progreso de un estudiante");
-            System.out.println("6. Guardar datos");
+           // System.out.println("6. Guardar datos");
             System.out.println("7. Cargar datos");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opción: ");
@@ -45,7 +46,7 @@ public class ConsolaApp {
                 case 4 -> inscribirEstudianteEnLearningPath(scanner);
                 case 5 -> verProgresoEstudiante(scanner);
                 //    case 6 -> guardarDatos();
-                //       case 7 -> cargarDatos();
+                       case 7 -> cargarDatos();
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida, intenta de nuevo.");
             }
@@ -88,7 +89,7 @@ public class ConsolaApp {
         profesores.add(profesor);
         System.out.println("Profesor registrado exitosamente.");
         try {
-        	SerializacionDeArchivo.guardarObjetoSerializable(profesor, "Estudiantes.csv");
+        	SerializacionDeArchivo.guardarObjetoSerializable(profesor, "Profesores.csv");
             
             System.out.println("Datos guardados exitosamente.");
         } catch (IOException e) {
@@ -110,7 +111,7 @@ public class ConsolaApp {
         learningPaths.add(lp);
         System.out.println("Learning Path creado exitosamente.");
         try {
-        	SerializacionDeArchivo.guardarObjetoSerializable(lp, "Estudiantes.csv");
+        	SerializacionDeArchivo.guardarObjetoSerializable(lp, "LearningPath.csv");
             
             System.out.println("Datos guardados exitosamente.");
         } catch (IOException e) {
@@ -180,16 +181,31 @@ public class ConsolaApp {
     //    }
     //  }
 
-    //  private static void cargarDatos() {
-    //     try {
-    //        estudiantes = PersistenciaDatos.cargarEstudiante();
-    //        profesores = PersistenciaDatos.cargarProfesores();
-    //        learningPaths = PersistenciaDatos.cargarLearningPaths();
-    //        System.out.println("Datos cargados exitosamente.");
-    //    } catch (IOException e) {
-    //        System.out.println("Error al cargar los datos: " + e.getMessage());
-    //    }
-    // }
-}
+      private static void cargarDatos() {
+    	  try {
+    	        // Cargar lista de estudiantes desde archivo serializado
+    	        Object estudiantesObjeto = SerializacionDeArchivo.leerObjetoSerializable("Estudiantes.csv");
+    	        if (estudiantesObjeto instanceof List<?>) {
+    	            estudiantes = (List<Estudiante>) estudiantesObjeto;
+    	   
+    	        }
 
+    	        // Cargar lista de profesores desde archivo serializado
+    	        Object profesoresObjeto = SerializacionDeArchivo.leerObjetoSerializable("Profesores.csv");
+    	        if (profesoresObjeto instanceof List<?>) {
+    	            profesores = (List<Profesor>) profesoresObjeto;
+    	        }
+
+    	        // Cargar lista de Learning Paths desde archivo serializado
+    	        Object learningPathsObjeto = SerializacionDeArchivo.leerObjetoSerializable("LearningPath.csv");
+    	        if (learningPathsObjeto instanceof List<?>) {
+    	            learningPaths = (List<LearningPath>) learningPathsObjeto;
+    	        }
+
+    	        System.out.println("Datos cargados exitosamente desde archivos serializados.");
+    	    } catch (Exception e) {
+    	        System.out.println("Error al cargar los datos: " + e.getMessage());
+    	    }
+    	}
+}
 

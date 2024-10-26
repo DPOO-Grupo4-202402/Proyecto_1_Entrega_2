@@ -1,6 +1,8 @@
 package logica;
 
-public class Profesor extends Usuario{
+import java.io.Serializable;
+
+public class Profesor extends Usuario implements Serializable{
 
 	public Profesor(int id, String nombre, String email, String contrasenia) {
 		super(id, nombre, email, contrasenia);

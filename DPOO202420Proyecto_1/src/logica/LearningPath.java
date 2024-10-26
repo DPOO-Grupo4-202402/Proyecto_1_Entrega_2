@@ -1,9 +1,10 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class LearningPath {
+public class LearningPath implements Serializable{
 	
 	private int idRuta;
 	private String titulo;

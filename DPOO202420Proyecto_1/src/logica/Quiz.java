@@ -7,7 +7,7 @@ public class Quiz extends Actividad{
 	private double calificacionMinima;
 	private int duracion;
 	private double calificacionObtenida;
-	private ArrayList<PreguntaCerrada> preguntasCerradas;
+	private ArrayList<PreguntaVerdaderoFalso> preguntasCerradas;
 
 	public Quiz(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
 			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
@@ -44,11 +44,11 @@ public class Quiz extends Actividad{
 		this.calificacionObtenida = calificacionObtenida;
 	}
 	
-	public ArrayList<PreguntaCerrada> getPreguntasCerradas() {
+	public ArrayList<PreguntaVerdaderoFalso> getPreguntasCerradas() {
 		return preguntasCerradas;
 	}
 
-	public void setPreguntasCerradas(ArrayList<PreguntaCerrada> preguntasCerradas) {
+	public void setPreguntasCerradas(ArrayList<PreguntaVerdaderoFalso> preguntasCerradas) {
 		this.preguntasCerradas = preguntasCerradas;
 	}
 	
@@ -71,16 +71,16 @@ public class Quiz extends Actividad{
 	}
 	
 	//Metodos para manejar preguntas.
-	public void agregarPregunta(PreguntaCerrada pregunta) {
+	public void agregarPregunta(PreguntaVerdaderoFalso pregunta) {
 		preguntasCerradas.add(pregunta);
 	}
 	
-	public void eliminarPregunta(PreguntaCerrada pregunta)
+	public void eliminarPregunta(PreguntaVerdaderoFalso pregunta)
 	{
 		preguntasCerradas.remove(pregunta);
 	}
 	
-	public PreguntaCerrada obtenerPregunta(int indice) {
+	public PreguntaVerdaderoFalso obtenerPregunta(int indice) {
 		return preguntasCerradas.get(indice);
 	}
 	@Override

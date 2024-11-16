@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public abstract class Usuario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int id;
 	protected String nombre;
 	protected String email;
@@ -13,7 +17,7 @@ public abstract class Usuario implements Serializable {
 	protected ArrayList<LearningPath> learningPaths;
 	
 	
-	public Usuario(int id, String nombre, String email, String contrasenia) {
+	public Usuario(int id, String nombre, String email, String contrasenia) { 
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;

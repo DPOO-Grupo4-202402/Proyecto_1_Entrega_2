@@ -1,7 +1,5 @@
 package logica;
 
-import java.util.HashMap;
-
 public class PreguntaVerdaderoFalso extends Pregunta{
 	
 	private boolean seleccion;

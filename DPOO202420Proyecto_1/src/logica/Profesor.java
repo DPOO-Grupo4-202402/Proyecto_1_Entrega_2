@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class Profesor extends Usuario implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Profesor(int id, String nombre, String email, String contrasenia) {
 		super(id, nombre, email, contrasenia);
 		// TODO Auto-generated constructor stub

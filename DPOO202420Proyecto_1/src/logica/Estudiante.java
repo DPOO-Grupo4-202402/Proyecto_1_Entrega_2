@@ -1,10 +1,13 @@
 package logica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Estudiante extends Usuario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String intereses;
 
 	public Estudiante(int id, String nombre, String email, String contrasenia, String intereses) {

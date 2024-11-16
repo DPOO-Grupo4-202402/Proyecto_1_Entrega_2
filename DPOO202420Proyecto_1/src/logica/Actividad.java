@@ -1,7 +1,6 @@
 package logica;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public abstract class Actividad {
 
@@ -171,15 +170,6 @@ public abstract class Actividad {
 	}
 	
 	public ArrayList<Resenia> listaDeResenias(){
-		return this.resenias;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
+		return this.resenias;	
+	}
 }	

@@ -6,6 +6,10 @@ import java.util.Date;
 
 public class LearningPath implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idRuta;
 	private String titulo;
 	private String descripcion;
@@ -133,10 +137,11 @@ public class LearningPath implements Serializable{
 		public void agregarUsuario(Usuario usuario) throws Exception {
 			if (!this.usuarios.contains(usuario)) {
 				this.usuarios.add(usuario);
-				Progreso progreso = new Progreso(new Date(),	 usuario, this);
+				Progreso progreso = new Progreso(new Date(), usuario, this);
 				this.progresos.add(progreso);
-			}
+			} else {
 			throw new Exception("Usuario ya inscrito previamente en este Learning Path");
+			}
 		}
 
 
@@ -145,8 +150,9 @@ public class LearningPath implements Serializable{
 			int index = this.usuarios.indexOf(usuario);
 			if (index != -1 ) {
 				return this.progresos.get(index);
-			}
+			} else {
 			throw new Exception("Usuario inexistente en este Learning Path");
+			}
 		}
 		
 

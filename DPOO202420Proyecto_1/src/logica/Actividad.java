@@ -173,11 +173,8 @@ public abstract class Actividad {
 	
 	public boolean sePuedeHacer() {
 		
-		boolean hayIncompletas = false;
-		
 		for(Actividad previa : actividadesPrevias) {
 			if (!previa.esCompletada()) {
-				hayIncompletas = true;
 				System.out.println("Advertencia: La actividad previa: " + previa.getTitulo() + " no esta completada.");
 			}
 		}

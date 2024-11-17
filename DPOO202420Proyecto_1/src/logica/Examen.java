@@ -19,7 +19,7 @@ public class Examen extends Actividad{
 		this.setCalificacionObtenida(calificacionObtenida);
 		this.setCalificacionMinima(calificacionMinima);
 		this.setPreguntas(new ArrayList<>());
-	}
+	} 
 	
 	//Getters y Setters.
 	public ArrayList<PreguntaAbierta> getPreguntas() {
@@ -86,7 +86,7 @@ public class Examen extends Actividad{
 	@Override
 	public void ejecutar() {
 		// logica para ejecutar
-		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
+		System.out.println("Examen completado: " + this.getTitulo() + ", Estado: " + this.resultado);
 		
 	}
 

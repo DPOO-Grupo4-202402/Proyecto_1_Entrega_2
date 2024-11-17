@@ -94,6 +94,9 @@ public class Estudiante extends Usuario implements Serializable{
 					} catch (NumberFormatException e){
 						throw new Exception("El resultado debe ser un numero.");
 					}
+				} else if (actividadACompletar instanceof RevisarRecurso) {
+					RevisarRecurso recurso = (RevisarRecurso) actividadACompletar;
+					recurso.marcarRevisado();
 				}
 				
 				progreso.actualizarProgreso();

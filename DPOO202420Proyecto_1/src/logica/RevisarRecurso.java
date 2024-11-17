@@ -33,7 +33,7 @@ public class RevisarRecurso extends Actividad{
 	public void ejecutar() {
 		// Logica de ejecucion.
 		marcarRevisado();
-		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
+		System.out.println("Recurso Revisado: " + this.getTitulo() + ", Estado: " + this.resultado);
 	}
 	
 	

@@ -86,6 +86,6 @@ public class Quiz extends Actividad{
 	@Override
 	public void ejecutar() {
 		//Logica de ejecucion.
-		System.out.println("Encuesta completada: " + this.getTitulo() + ", Estado: " + this.resultado);
+		System.out.println("Quiz completado: " + this.getTitulo() + ", Estado: " + this.resultado);
 	}
 }

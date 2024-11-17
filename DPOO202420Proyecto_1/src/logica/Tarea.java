@@ -26,7 +26,7 @@ public class Tarea extends Actividad{
 
 	//Metodos para manejar entregas.
 	public boolean entregadaATiempo(Date fechaEntregaEstudiante) {
-		return fechaEntregaEstudiante.before(this.fechaEntrega);
+		return !fechaEntregaEstudiante.after(this.fechaEntrega);
 	}
 
 	public void marcarExitosa() {

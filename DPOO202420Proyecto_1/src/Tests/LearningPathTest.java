@@ -11,8 +11,6 @@ import logica.Profesor;
 import logica.Progreso;
 import logica.Quiz;
 import logica.Tarea;
-import logica.Usuario;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;

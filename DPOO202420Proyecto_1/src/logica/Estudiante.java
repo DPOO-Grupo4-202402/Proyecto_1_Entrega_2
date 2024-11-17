@@ -67,6 +67,19 @@ public class Estudiante extends Usuario implements Serializable{
 			
 			if(actividadACompletar.sePuedeHacer()) {
 				actividadACompletar.asignarResultado(resultado);
+				
+				if(actividadACompletar instanceof Tarea) {
+					Tarea tarea = (Tarea) actividadACompletar;
+					if(resultado.equals("Exitosa")) {
+						tarea.marcarExitosa();
+					} else {
+						tarea.marcarNoExitosa();
+					}
+				} else if (actividadACompletar instanceof Quiz) {
+					Quiz quiz = (Quiz) actividadACompletar;
+					quiz.setResultado(resultado);
+				}
+				
 				progreso.actualizarProgreso();
 				System.out.println("Actividad completada con exito: " + actividadACompletar.getTitulo());
 			} else {

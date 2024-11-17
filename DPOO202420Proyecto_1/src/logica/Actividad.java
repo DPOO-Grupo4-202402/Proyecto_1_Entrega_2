@@ -119,7 +119,27 @@ public abstract class Actividad {
 	
 	//Metodos de verificacion.
 	public boolean esCompletada() {
-		return this.resultado != null && !this.resultado.equals("Pendiente");
+		if (this instanceof Tarea) {
+			Tarea tarea = (Tarea) this;
+			if(tarea.getEstado().equals("Exitosa")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (this instanceof Quiz){
+			Quiz quiz = (Quiz) this;
+			if (quiz.getResultado().equals("Aprobado")) {
+				return true;
+			} else {
+				return false;
+			}	
+		} else {
+			if(this.resultado != null && !this.resultado.equals("Pendiente")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 	
 	public boolean sePuedeHacer() {

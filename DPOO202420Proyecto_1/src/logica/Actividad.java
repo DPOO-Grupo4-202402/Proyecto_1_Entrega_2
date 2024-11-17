@@ -155,6 +155,13 @@ public abstract class Actividad {
 			} else {
 				return false;
 			}
+		} else if (this instanceof RevisarRecurso){
+			RevisarRecurso recurso = (RevisarRecurso) this;
+			if (recurso.obtenerResultado().equals("Revisado")) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			if(this.resultado != null && !this.resultado.equals("Pendiente")) {
 				return true;
@@ -165,9 +172,13 @@ public abstract class Actividad {
 	}
 	
 	public boolean sePuedeHacer() {
+		
+		boolean hayIncompletas = false;
+		
 		for(Actividad previa : actividadesPrevias) {
 			if (!previa.esCompletada()) {
-				return false;
+				hayIncompletas = true;
+				System.out.println("Advertencia: La actividad previa: " + previa.getTitulo() + " no esta completada.");
 			}
 		}
 		return true;

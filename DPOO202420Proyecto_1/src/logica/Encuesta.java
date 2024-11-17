@@ -12,6 +12,11 @@ public class Encuesta extends Actividad{
 			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.duracion = duracion;
+		this.preguntas = new ArrayList<>();
+	}
+	
+	public ArrayList<PreguntaAbierta> getPreguntas(){
+		return preguntas;
 	}
 
 	public int getDuracion() {

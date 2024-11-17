@@ -47,7 +47,7 @@ public class Estudiante extends Usuario implements Serializable{
 	        try {
 	            Progreso progreso = consultarProgreso(lp);
 	            System.out.println("Learning Path: " + lp.getTitulo());
-	            System.out.println("Progreso: " + progreso.getPorcentajeCompletado() + "%");
+	            System.out.println("Progreso: " + Math.round(progreso.getPorcentajeCompletado() * 10) /10.0 + "%"); 
 	            
 	            for (Actividad actividad : lp.getActividades()) {
 	                String estado = actividad.esCompletada() ? "Completada" : "Pendiente";
@@ -78,6 +78,22 @@ public class Estudiante extends Usuario implements Serializable{
 				} else if (actividadACompletar instanceof Quiz) {
 					Quiz quiz = (Quiz) actividadACompletar;
 					quiz.setResultado(resultado);
+				} else if (actividadACompletar instanceof Encuesta) {
+					Encuesta encuesta = (Encuesta) actividadACompletar;
+					encuesta.marcarCompletada();
+				} else if (actividadACompletar instanceof Examen) {
+					Examen examen = (Examen) actividadACompletar;
+					try {
+						double calificacionObtenida = Double.parseDouble(resultado);
+						examen.setCalificacionObtenida(calificacionObtenida);
+						if(examen.aprobado(calificacionObtenida)) {
+							System.out.println("Examen aprobado con calificacion de: " + calificacionObtenida);
+						} else {
+							System.out.println("Examen no aprobado, Calificacion obtenida: " + calificacionObtenida + ", calificacion minima para aprobar: " + examen.getCalificacionMinima());
+						}
+					} catch (NumberFormatException e){
+						throw new Exception("El resultado debe ser un numero.");
+					}
 				}
 				
 				progreso.actualizarProgreso();
@@ -87,7 +103,7 @@ public class Estudiante extends Usuario implements Serializable{
 			}
 		} else {
 			throw new Exception("No estas inscrito en el learning path.");
-		}
+		}	
 	}
 	
 	public void verLearningPathsInscritos() {
@@ -96,4 +112,4 @@ public class Estudiante extends Usuario implements Serializable{
 			System.out.println("ID: " + lp.getIdRuta() + ", Titulo: " + lp.getTitulo());
 		}
 	}
-}
+} 

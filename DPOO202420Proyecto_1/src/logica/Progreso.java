@@ -105,7 +105,6 @@ public class Progreso {
 			this.resultado = "En progreso";
 			this.fechaCompletado = null;
 		}
-		
 	}
 	
 }

@@ -12,7 +12,7 @@ public abstract class Actividad {
 	protected String resultado;
 	protected ArrayList<Resenia> resenias;
 	protected ArrayList<Actividad> actividadesPrevias;
-	static protected ArrayList<Actividad> actividadesExistentes = new ArrayList<Actividad>();
+	static public ArrayList<Actividad> actividadesExistentes = new ArrayList<Actividad>();
 	protected ArrayList<LearningPath> learningPaths;
 	
 	//, ArrayList<Resenia> resenias, ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths
@@ -78,9 +78,6 @@ public abstract class Actividad {
 	public void setActividadesPrevias(ArrayList<Actividad> actividadesPrevias) {
 		this.actividadesPrevias = actividadesPrevias;
 	}
-	public ArrayList<Actividad> getActividadesExistentes() {
-		return actividadesExistentes;
-	}
 	public void setActividadesExistentes(ArrayList<Actividad> actividadesExistentes) {
 		Actividad.actividadesExistentes = actividadesExistentes;
 	}
@@ -90,6 +87,15 @@ public abstract class Actividad {
 	public void setLearningPaths(ArrayList<LearningPath> learningPaths) {
 		this.learningPaths = learningPaths;
 	}
+	
+	public static void resetActividadesExistentes() {
+		actividadesExistentes.clear();
+	}
+	
+	public static ArrayList<Actividad> getActividadesExistentes(){
+		return actividadesExistentes;
+	}
+	
 	
 	//Metodos para manejar las actividades previas.
 	public Actividad buscarActividadPreviaSugerida(int idActividad) throws Exception {
@@ -103,11 +109,13 @@ public abstract class Actividad {
 	}
 	
 	public void agregarActividadPreviaSugerida(int idActividad) throws Exception {
+		
+		Actividad previa = this.buscarActividadPreviaSugerida(idActividad);
 	
-		if (!actividadesPrevias.contains(this.buscarActividadPreviaSugerida(idActividad))) {
-			actividadesPrevias.add(this.buscarActividadPreviaSugerida(idActividad));
+		if (actividadesPrevias.contains(previa)) {
+			throw new Exception("La actividad previa con ese id ya existía en esta actividad");
 		}
-		throw new Exception("La actividad previa con ese id ya existía en esta actividad");
+		actividadesPrevias.add(previa);
 	}
 	
 	public void eliminarActividadPreviaSugerida(int idActividad) throws Exception {
@@ -133,11 +141,25 @@ public abstract class Actividad {
 			} else {
 				return false;
 			}	
+		} else if (this instanceof Examen){
+			Examen examen = (Examen) this;
+			if (examen.getEstado().equals("Exitoso")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (this instanceof Encuesta) {
+			Encuesta encuesta = (Encuesta) this;
+			if (encuesta.getResultado().equals("Completada")) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			if(this.resultado != null && !this.resultado.equals("Pendiente")) {
 				return true;
 			} else {
-				return false;
+				return false; 
 			}
 		}
 	}

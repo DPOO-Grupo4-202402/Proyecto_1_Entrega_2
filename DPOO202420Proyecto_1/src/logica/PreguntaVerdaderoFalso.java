@@ -21,11 +21,6 @@ public class PreguntaVerdaderoFalso extends Pregunta{
 	}
 
 
-	public boolean isCorrecta() {
-		return correcta;
-	}
-
-
 	public void setCorrecta(boolean correcta) {
 		this.correcta = correcta;
 	}

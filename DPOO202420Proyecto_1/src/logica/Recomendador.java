@@ -39,13 +39,17 @@ public class Recomendador {
 		this.estudiantes = estudiantes;
 	}
 	
-	public ArrayList<LearningPath> recomendarLearningPaths(Estudiante estudiante, ArrayList<LearningPath> learningPahsDisponibles){
+	public ArrayList<LearningPath> recomendarLearningPaths(Estudiante estudiante, ArrayList<LearningPath> learningPahsDisponibles) throws Exception{
 		ArrayList<LearningPath> learningPathsRecomendados = new ArrayList<>();
+		
+		if (estudiante.getIntereses() == null || estudiante.getIntereses().trim().isEmpty()) {
+			return learningPathsRecomendados;
+		}
 		
 		for(LearningPath lp : learningPahsDisponibles) {
 			if(contieneIntereses(estudiante.getIntereses(), lp.getDescripcion())) {
 				learningPathsRecomendados.add(lp);
-			}
+			} 
 		}
 		return learningPathsRecomendados;
 	}

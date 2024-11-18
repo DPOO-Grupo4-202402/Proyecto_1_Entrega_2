@@ -398,10 +398,6 @@ public class ConsolaProfesorCreador extends ConsolaApp {
     }
 
 
-    private static void evaluarTareas(Scanner scanner, Profesor profesor) {
-        // Implementar funcionalidad de evaluación.
-    }
-    
     
     
 }

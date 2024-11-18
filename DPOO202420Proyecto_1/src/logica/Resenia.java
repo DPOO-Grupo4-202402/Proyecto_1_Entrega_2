@@ -1,9 +1,14 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Resenia {
+public class Resenia implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Usuario autor;
 	private int rating;
 	private String comentario;

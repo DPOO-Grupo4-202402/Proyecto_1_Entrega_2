@@ -17,7 +17,7 @@ public class RevisarRecursoTest {
 	
 	@BeforeEach
 	public void setUp() {
-		recurso = new RevisarRecurso(101, "Lectura de Python", "Revisar conceptos de Python", "Dominar lo fundamental", "Facil", "Facil", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "Documento");
+		recurso = new RevisarRecurso(101, "Lectura de Python", "Revisar conceptos de Python", "Dominar lo fundamental", "Facil", 40, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "Documento");
 	}
 	
 	@Test

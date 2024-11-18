@@ -28,9 +28,9 @@ public class EstudianteTest {
 		Actividad.resetActividadesExistentes();
 		estudiante = new Estudiante(1001, "Santiago", "santiago@gmail.com", "santi1234", "Ciencias, programacion");
 		learningPath = new LearningPath(1, "Python Basics", "Desarrolla habilidades fundamentales de programacion en Python", "Aprende lo basico de python", "Principiante");
-		encuesta = new Encuesta(101, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", null, null, null, 15);
-		examen = new Examen(102, "Examen Final", "Evaluacion conocimientos Python", "Demostrar el estudio", "Dificil", "Dificil", "Pendiente", null, null, null, 120, 80.0, 70.0, "No enviado");
-		tarea = new Tarea(103, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
+		encuesta = new Encuesta(101, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", null, null, null);
+		examen = new Examen(102, "Examen Final", "Evaluacion conocimientos Python", "Demostrar el estudio", "Dificil", 120, "Pendiente", null, null, null, 80.0, 70.0, "No enviado");
+		tarea = new Tarea(103, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", 40, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
 
 		Actividad.getActividadesExistentes().add(tarea);
 		
@@ -83,7 +83,7 @@ public class EstudianteTest {
 		estudiante.inscribirseEnLearningPath(learningPath);
 		
 		
-		Tarea independiente = new Tarea(104, "Tarea previa", "previa de python", "Previar", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
+		Tarea independiente = new Tarea(104, "Tarea previa", "previa de python", "Previar", "baja", 40, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
 		independiente.agregarActividadPreviaSugerida(103);
 		learningPath.agregarActividad(independiente);
 		

@@ -25,7 +25,7 @@ public class TareaTest {
 		cal.add(Calendar.DAY_OF_YEAR, 1);
 		fechaEntrega = cal.getTime();
 		
-		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), fechaEntrega);
+		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", 30, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), fechaEntrega);
 	}
 	
 	@Test

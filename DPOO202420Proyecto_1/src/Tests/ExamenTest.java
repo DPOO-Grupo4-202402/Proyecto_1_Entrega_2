@@ -28,7 +28,7 @@ public class ExamenTest {
 		preguntas.add(pregunta1);
 		preguntas.add(pregunta2);
 		
-		examen = new Examen(102, "Examen Final", "Evaluacion conocimientos Python", "Demostrar el estudio", "Dificil", "Dificil", "Pendiente", null, null, null, 120, 80.0, 70.0, "No enviado");
+		examen = new Examen(102, "Examen Final", "Evaluacion conocimientos Python", "Demostrar el estudio", "Dificil", 120, "Pendiente", null, null, null, 80.0, 70.0, "No enviado");
 		
 		examen.setPreguntas(preguntas);
 	}

@@ -24,8 +24,8 @@ public class ProfesorTest {
 	public void setUp() {
 		profesor = new Profesor(2001, "Eduardo", "eduardo@gmail.com", "eduardo1234");
 		learningPath = profesor.crearLearningPath(1, "Python Basics", "Aprende lo basico de python", "Desarrolla habilidades fundamentales de programacion", "Principiante");
-		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
-		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 30, 80.0, 10.0);
+		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", 40, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
+		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", 30, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 80.0, 10.0);
 	}
 	
 	@Test

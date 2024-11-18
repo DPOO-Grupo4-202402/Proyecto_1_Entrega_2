@@ -20,7 +20,7 @@ public class QuizTest {
 	
 	@BeforeEach
 	public void setUp() {
-		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 30, 80.0, 10.0);
+		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", 30, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 80.0, 10.0);
 		
 		pregunta1 = new PreguntaVerdaderoFalso(1, "Python es un Lenguaje de Programacion?", 5, true);
 		pregunta2 = new PreguntaVerdaderoFalso(1, "En Python cada linea se acaba con un ';'?", 5, false);

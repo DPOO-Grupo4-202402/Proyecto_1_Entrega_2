@@ -1,17 +1,27 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Quiz extends Actividad{
+public class Quiz extends Actividad implements Serializable{
 
 	private double calificacionMinima;
 	private int duracion;
 	private double calificacionObtenida;
 	private ArrayList<PreguntaVerdaderoFalso> preguntasCerradas;
 
-	public Quiz(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
-			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
-			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion, double calificacionMinima, double calificacionObtenida) {
+	public Quiz(int idActividad, 
+			String titulo, 
+			String descripcion, 
+			String objetivos, 
+			String dificultad,
+			int duracion,
+			String resultado, 
+			ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, 
+			ArrayList<LearningPath> learningPaths, 
+			double calificacionMinima, 
+			double calificacionObtenida) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.duracion = duracion;
 		this.calificacionMinima = calificacionMinima;

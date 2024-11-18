@@ -98,6 +98,16 @@ public class LearningPath implements Serializable{
 			this.progresos = new ArrayList<Progreso>();
 			this.usuarios = new ArrayList<Usuario>();
 		}
+		
+		@Override
+		public String toString() {
+		    return "LearningPath{idRuta=" + idRuta + 
+		           ", titulo='" + titulo + '\'' + 
+		           ", descripcion='" + descripcion + '\'' + 
+		           ", objetivos='" + objetivos + '\'' + 
+		           ", dificultad='" + dificultad + '\'' + 
+		           '}';
+		}
 
 
 		// Métodos para manejar resenias. (ESTO SE MODIFICA, TOCA IMPLEMENTARLO CON ACTIVIDADES)

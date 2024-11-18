@@ -25,8 +25,8 @@ public class ActividadTest {
 	public void setUp() {
 		Actividad.resetActividadesExistentes();
 		
-		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
-		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", "baja", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 30, 80.0, 10.0);
+		tarea = new Tarea(101, "Tarea 1", "Realizar proyecto basico en python", "Practicar", "baja", 30, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Date(System.currentTimeMillis() + 86400000));
+		quiz = new Quiz(102, "Quiz sobre conceptos de python", "Preguntas sobre asignaciones", "Evaluar conocimientos", "baja", 30, "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 80.0, 10.0);
 		autor = new Estudiante(1001, "Santiago", "santiago@gmail.com", "santi1234", "python");
 		
 		Actividad.getActividadesExistentes().add(tarea);
@@ -53,7 +53,7 @@ public class ActividadTest {
 	
 	@Test
 	public void testAgregarActividadPrevia() throws Exception {
-		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", null, null, null, 15);
+		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", null, null, null);
 		Actividad.getActividadesExistentes().add(encuesta);
 		quiz.agregarActividadPreviaSugerida(103);
 		assertTrue(quiz.getActividadesPrevias().contains(encuesta), "La actividad previa deberia haber sido agregada.");
@@ -61,7 +61,7 @@ public class ActividadTest {
 	
 	@Test
 	public void testAgregarActividadPreviaDuplicada() throws Exception {
-		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", null, null, null, 15);
+		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", null, null, null);
 		Actividad.getActividadesExistentes().add(encuesta);
 		quiz.agregarActividadPreviaSugerida(103);
 		Exception exception = assertThrows(Exception.class, () -> quiz.agregarActividadPreviaSugerida(103));
@@ -83,7 +83,7 @@ public class ActividadTest {
 	
 	@Test
 	public void testSePuedeHacerPreviasIncompletas() throws Exception {
-		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", null, null, null, 15);
+		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", null, null, null);
 		Actividad.getActividadesExistentes().add(encuesta);
 		tarea.agregarActividadPreviaSugerida(103);
 		assertTrue(tarea.sePuedeHacer());
@@ -91,7 +91,7 @@ public class ActividadTest {
 	
 	@Test
 	public void testSePuedeHacerPreviasCompletas() throws Exception {
-		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", null, null, null, 15);
+		Encuesta encuesta = new Encuesta(103, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", null, null, null);
 		Actividad.getActividadesExistentes().add(encuesta);
 		encuesta.asignarResultado("Completada");
 		assertTrue(encuesta.esCompletada());

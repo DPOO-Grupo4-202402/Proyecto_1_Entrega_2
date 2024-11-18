@@ -1,16 +1,29 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Tarea extends Actividad{
+public class Tarea extends Actividad implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date fechaEntrega;
 	private String estado;
 
-	public Tarea(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
-			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
-			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, Date fechaEntrega) {
+	public Tarea(int idActividad, 
+			String titulo, 
+			String descripcion, 
+			String objetivos, 
+			String dificultad,
+			int tiempoEsperado, 
+			String resultado, 
+			ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, 
+			ArrayList<LearningPath> learningPaths, 
+			Date fechaEntrega) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.fechaEntrega = fechaEntrega;
 		this.setEstado("Enviada");

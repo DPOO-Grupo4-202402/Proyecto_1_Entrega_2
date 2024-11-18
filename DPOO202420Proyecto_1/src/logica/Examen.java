@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Examen extends Actividad{
+public class Examen extends Actividad implements Serializable{
 
 	private int duracion;
 	private double calificacionObtenida;
@@ -10,9 +11,19 @@ public class Examen extends Actividad{
 	private String estado;
 	private ArrayList<PreguntaAbierta> preguntas;
 
-	public Examen(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
-			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
-			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion, double calificacionObtenida, double calificacionMinima, String estado) {
+	public Examen(int idActividad, 
+			String titulo, 
+			String descripcion, 
+			String objetivos, 
+			String dificultad,
+			int duracion,  
+			String resultado, 
+			ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, 
+			ArrayList<LearningPath> learningPaths,
+			double calificacionMinima, 
+			double calificacionObtenida, 
+			String estado) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.duracion = duracion; 
 		this.setEstado("Enviado");

@@ -8,9 +8,17 @@ public class Encuesta extends Actividad implements Serializable{
 	private int duracion;
 	private ArrayList<PreguntaAbierta> preguntas;
 
-	public Encuesta(int idActividad, String titulo, String descripcion, String objetivos, String dificultad,
-			String dificultadEsperada, String resultado, ArrayList<Resenia> resenias,
-			ArrayList<Actividad> actividadesPrevias, ArrayList<LearningPath> learningPaths, int duracion) {
+	public Encuesta(int idActividad, 
+			String titulo, 
+			String descripcion, 
+			String objetivos, 
+			String dificultad,
+			int duracion,
+			String resultado, 
+			ArrayList<Resenia> resenias,
+			ArrayList<Actividad> actividadesPrevias, 
+			ArrayList<LearningPath> learningPaths 
+			) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.duracion = duracion;
 		this.preguntas = new ArrayList<>();

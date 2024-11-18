@@ -14,6 +14,11 @@ public class Profesor extends Usuario implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
+    public String toString() {
+        return "Profesor{id=" + id + ", nombre='" + nombre + "', email='" + email + "', contrasenia='" + contrasenia + "'}";
+    }
+	
 	public LearningPath crearLearningPath (int idRuta, String titulo, String descripcion, String objetivos, String dificultad) {
 		LearningPath nuevoLearningPath = new LearningPath(idRuta, titulo, descripcion, objetivos, dificultad);
 		this.learningPaths.add(nuevoLearningPath);

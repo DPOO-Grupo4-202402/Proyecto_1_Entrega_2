@@ -20,7 +20,7 @@ public class EncuestaTest {
 	
 	@BeforeEach
 	public void setUp() {
-		encuesta = new Encuesta(101, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", "facil", "Pendiente", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 15);
+		encuesta = new Encuesta(101, "Encuesta de satisfaccion", "Cuentanos tu experiencia", "Reflexionar sobre lo aprendido", "facil", 15, "Pendiente", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		
 		pregunta1 = new PreguntaAbierta(1, "Que te gusto mas del curso?", 10, "Las clases", "");
 		pregunta2 = new PreguntaAbierta(2, "Que mejorarias del curso?", 5, "Nada", "");

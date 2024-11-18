@@ -14,6 +14,10 @@ public class Estudiante extends Usuario implements Serializable{
 		super(id, nombre, email, contrasenia);
 		this.intereses = intereses;
 	}
+	@Override
+	public String toString() {
+	    return "Estudiante{id=" + id + ", nombre='" + nombre + "', email='" + email + "', intereses='" + intereses + "'}";
+	}
 
 	public String getIntereses() {
 		return intereses;

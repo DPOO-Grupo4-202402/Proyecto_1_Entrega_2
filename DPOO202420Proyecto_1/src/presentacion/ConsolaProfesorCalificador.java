@@ -111,8 +111,10 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
 
         System.out.println("\n--- Estudiantes inscritos en el Learning Path: " + lpSeleccionado.getTitulo() + " ---");
         boolean estudiantesEncontrados = false;
+        System.out.println(lpSeleccionado);
 
         for (Estudiante estudiante : estudiantes) {
+        	System.out.println(estudiante.getLearningPaths());
             if (estudiante.getLearningPaths().contains(lpSeleccionado)) {
                 System.out.println("ID: " + estudiante.getId() + " | Nombre: " + estudiante.getNombre());
                 estudiantesEncontrados = true;
@@ -175,9 +177,9 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
 
         System.out.print("Ingrese el ID del Learning Path: ");
         int idLearningPath = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
-        LearningPath lpSeleccionado = estudianteSeleccionado.getLearningPathsInscritos()
+        LearningPath lpSeleccionado = estudianteSeleccionado.getLearningPaths()
             .stream()
             .filter(lp -> lp.getIdRuta() == idLearningPath)
             .findFirst()
@@ -195,7 +197,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
 
         System.out.print("Ingrese el ID de la actividad para evaluar: ");
         int idActividad = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         Actividad actividadSeleccionada = lpSeleccionado.getActividades()
             .stream()
@@ -221,7 +223,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
     	profesor.getLearningPaths();
         System.out.print("Ingrese el ID del Learning Path: ");
         int idLearningPath = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         LearningPath lpSeleccionado = profesor.getLearningPaths()
             .stream()
@@ -241,7 +243,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
 
         System.out.print("Ingrese el ID de la actividad para agregar una reseña: ");
         int idActividad = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         Actividad actividadSeleccionada = lpSeleccionado.getActividades()
             .stream()

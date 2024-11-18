@@ -310,6 +310,8 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         	LearningPath lpListaGeneral = buscarLearningPathPorId(lpSeleccionado.getIdRuta());
             lpListaGeneral.agregarActividad(nuevaActividad);
             profesor.agregarActividadAlLearningPath(lpSeleccionado, nuevaActividad);
+            actividades.add(nuevaActividad);
+            System.out.println(actividades);
             guardarDatos();
             System.out.println("Actividad creada y agregada exitosamente.");
         } catch (Exception e) {

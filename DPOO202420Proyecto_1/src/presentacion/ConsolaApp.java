@@ -16,9 +16,9 @@ import persistencia.SerializacionDeArchivo;;
 
 public class ConsolaApp {
 	
-    private static List<Profesor> profesores = new ArrayList<>();
-    private static List<Estudiante> estudiantes = new ArrayList<>();
-    private static List<LearningPath> learningPaths = new ArrayList<>();
+    protected static List<Profesor> profesores = new ArrayList<>();
+    protected static List<Estudiante> estudiantes = new ArrayList<>();
+    protected static List<LearningPath> learningPaths = new ArrayList<>();
     private Estudiante estudiante;
 
     public static void main(String[] args) throws Exception {
@@ -32,7 +32,7 @@ public class ConsolaApp {
             System.out.println("3. Crear un Learning Path");
             System.out.println("4. Inscribir estudiante en un Learning Path");
             System.out.println("5. Ver progreso de un estudiante");
-           // System.out.println("6. Guardar datos");
+            System.out.println("6. Guardar datos");
             System.out.println("7. Cargar datos");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opción: ");
@@ -45,7 +45,7 @@ public class ConsolaApp {
                 case 3 -> crearLearningPath(scanner);
                 case 4 -> inscribirEstudianteEnLearningPath(scanner);
                 case 5 -> verProgresoEstudiante(scanner);
-                //    case 6 -> guardarDatos();
+                	   case 6 -> guardarDatos();
                        case 7 -> cargarDatos();
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida, intenta de nuevo.");
@@ -68,13 +68,13 @@ public class ConsolaApp {
         Estudiante estudiante = new Estudiante(estudiantes.size() + 1, nombre, email, password, intereses);
         estudiantes.add(estudiante);
         System.out.println("Estudiante registrado exitosamente.");
-        try {
-        	SerializacionDeArchivo.guardarObjetoSerializable(estudiante, "Estudiantes.csv");
+        //  try {
+        //	SerializacionDeArchivo.guardarObjetoSerializable(estudiante, "Estudiantes.csv");
             
-            System.out.println("Datos guardados exitosamente.");
-        } catch (IOException e) {
-            System.out.println("Error al guardar los datos: " + e.getMessage());
-        }
+        //    System.out.println("Datos guardados exitosamente.");
+        // } catch (IOException e) {
+        //    System.out.println("Error al guardar los datos: " + e.getMessage());
+            // }
     }
 
     private static void registrarProfesor(Scanner scanner) {
@@ -88,13 +88,13 @@ public class ConsolaApp {
         Profesor profesor = new Profesor(profesores.size() + 1, nombre, email, password);
         profesores.add(profesor);
         System.out.println("Profesor registrado exitosamente.");
-        try {
-        	SerializacionDeArchivo.guardarObjetoSerializable(profesor, "Profesores.csv");
+        // try {
+        //	SerializacionDeArchivo.guardarObjetoSerializable(profesor, "Profesores.csv");
             
-            System.out.println("Datos guardados exitosamente.");
-        } catch (IOException e) {
-            System.out.println("Error al guardar los datos: " + e.getMessage());
-        }
+        //    System.out.println("Datos guardados exitosamente.");
+        // } catch (IOException e) {
+        //     System.out.println("Error al guardar los datos: " + e.getMessage());
+        // }
 
     }
 
@@ -110,17 +110,18 @@ public class ConsolaApp {
         LearningPath lp = new LearningPath(learningPaths.size() + 1, nombre, descripcion, objetivos, dificultad);
         learningPaths.add(lp);
         System.out.println("Learning Path creado exitosamente.");
-        try {
-        	SerializacionDeArchivo.guardarObjetoSerializable(lp, "LearningPath.csv");
+        //try {
+        //	SerializacionDeArchivo.guardarObjetoSerializable(lp, "LearningPath.csv");
             
-            System.out.println("Datos guardados exitosamente.");
-        } catch (IOException e) {
-            System.out.println("Error al guardar los datos: " + e.getMessage());
-        }
+        //    System.out.println("Datos guardados exitosamente.");
+       // } catch (IOException e) {
+       //     System.out.println("Error al guardar los datos: " + e.getMessage());
+       // }
         
     }
 
-    private static void inscribirEstudianteEnLearningPath(Scanner scanner) throws Exception {
+    private static void inscribirEstudianteEnLearningPath(Scanner scanner) {
+    	
         System.out.print("ID del estudiante: ");
         int idEstudiante = scanner.nextInt();
         scanner.nextLine(); 
@@ -134,6 +135,7 @@ public class ConsolaApp {
             System.out.println("Estudiante no encontrado.");
             return;
         }
+        estudiante.verLearningPathsInscritos();
 
         System.out.print("Nombre del Learning Path: ");
         String nombreLp = scanner.nextLine();
@@ -147,7 +149,12 @@ public class ConsolaApp {
             return;
         }
 
-        estudiante.inscribirseEnLearningPath(lp);
+        try {
+			estudiante.inscribirseEnLearningPath(lp);
+		} catch (Exception e1) {
+			
+			e1.printStackTrace();
+		}
         System.out.println("Estudiante inscrito en el Learning Path exitosamente.");
     }
 
@@ -180,26 +187,63 @@ public class ConsolaApp {
     //       System.out.println("Error al guardar los datos: " + e.getMessage());
     //    }
     //  }
+    
+    protected static void guardarDatos() {
+        try {
+        	System.out.println("\n"+"-----------------------------------------------");
+            // Guardar lista de estudiantes
+            SerializacionDeArchivo.guardarObjetoSerializable(estudiantes, "Estudiantes.dat");
+            for (Estudiante estudiante : estudiantes) {
+                System.out.println(estudiante);
+            }
 
-      private static void cargarDatos() {
+            // Guardar lista de profesores
+            SerializacionDeArchivo.guardarObjetoSerializable(profesores, "Profesores.dat");
+            for (Profesor profesor : profesores) {
+                System.out.println(profesor);
+            }
+
+            // Guardar lista de learning paths
+            SerializacionDeArchivo.guardarObjetoSerializable(learningPaths, "LearningPaths.dat");
+            for (LearningPath lp : learningPaths) {
+                System.out.println(lp);
+            }
+
+            System.out.println("-----------------------------------------------");
+            System.out.println("Datos guardados exitosamente en archivos binarios.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos: " + e.getMessage());
+        }
+    }
+
+      protected static void cargarDatos() {
     	  try {
     	        // Cargar lista de estudiantes desde archivo serializado
-    	        Object estudiantesObjeto = SerializacionDeArchivo.leerObjetoSerializable("Estudiantes.csv");
+    	        Object estudiantesObjeto = SerializacionDeArchivo.leerObjetoSerializable("Estudiantes.dat");
     	        if (estudiantesObjeto instanceof List<?>) {
     	            estudiantes = (List<Estudiante>) estudiantesObjeto;
+    	            for (Estudiante estudiante : estudiantes) {
+    	                System.out.println(estudiante);
+    	            }
     	   
     	        }
 
     	        // Cargar lista de profesores desde archivo serializado
-    	        Object profesoresObjeto = SerializacionDeArchivo.leerObjetoSerializable("Profesores.csv");
+    	        Object profesoresObjeto = SerializacionDeArchivo.leerObjetoSerializable("Profesores.dat");
     	        if (profesoresObjeto instanceof List<?>) {
     	            profesores = (List<Profesor>) profesoresObjeto;
+    	            for (Profesor profesor : profesores) {
+    	                System.out.println(profesor);
+    	            }
     	        }
 
     	        // Cargar lista de Learning Paths desde archivo serializado
-    	        Object learningPathsObjeto = SerializacionDeArchivo.leerObjetoSerializable("LearningPath.csv");
+    	        Object learningPathsObjeto = SerializacionDeArchivo.leerObjetoSerializable("LearningPaths.dat");
     	        if (learningPathsObjeto instanceof List<?>) {
     	            learningPaths = (List<LearningPath>) learningPathsObjeto;
+    	            for (LearningPath lp : learningPaths) {
+    	                System.out.println(lp);
+    	            }
     	        }
 
     	        System.out.println("Datos cargados exitosamente desde archivos serializados.");
@@ -207,5 +251,6 @@ public class ConsolaApp {
     	        System.out.println("Error al cargar los datos: " + e.getMessage());
     	    }
     	}
+      
+      
 }
-

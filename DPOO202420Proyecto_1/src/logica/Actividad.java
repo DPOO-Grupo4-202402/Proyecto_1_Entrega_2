@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Actividad {
+public abstract class Actividad implements Serializable{
 
 	protected int idActividad;
 	protected String titulo;

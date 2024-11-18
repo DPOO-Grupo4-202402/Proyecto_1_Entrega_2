@@ -1,10 +1,15 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Progreso {
+public class Progreso implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date fechaIniciado;
 	private Date fechaCompletado;
 	private String resultado;

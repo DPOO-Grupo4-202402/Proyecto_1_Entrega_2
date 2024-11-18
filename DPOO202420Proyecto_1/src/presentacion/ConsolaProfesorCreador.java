@@ -59,21 +59,21 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         System.out.print("Ingrese su contraseña: ");
         String contrasenia = scanner.nextLine();
         
-        for (Profesor profesor : profesores) {  // profesores se hereda de ConsolaApp
+        for (Profesor profesor : profesores) {  
         	 if (profesor.getNombre().equalsIgnoreCase(nombreUsuario)) {
                  if (profesor.getContrasenia().equals(contrasenia)) {
                      
-                     return profesor;  // Retorna el objeto Profesor si coincide nombre y contraseña
+                     return profesor;  
                  } else {
                      System.out.println("Contraseña incorrecta");
-                     return null;  // Devuelve null si la contraseña es incorrecta
+                     return null;  
                  }
              }
          }
 
-         // Mensaje de error si el usuario no fue encontrado en toda la lista
+        
          System.out.println("No se encuentra el usuario");
-         return null;  // Devuelve null si no se encontró al usuario en la lista
+         return null;  
      }
 
     private static void mostrarMenuProfesor(Scanner scanner, Profesor profesor) {
@@ -87,7 +87,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine();  // Limpiar el buffer de entrada.
+            scanner.nextLine();  
 
             switch (opcion) {
                 case 1 -> crearLearningPath(scanner, profesor);
@@ -131,7 +131,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
 
         System.out.print("Seleccione el número del Learning Path a editar: ");
         int index = scanner.nextInt() - 1;
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine();
 
         if (index < 0 || index >= profesor.getLearningPaths().size()) {
             System.out.println("Selección inválida.");
@@ -149,7 +149,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         System.out.println("0. Volver");
         System.out.print("Seleccione una opción: ");
         int opcion = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         switch (opcion) {
             case 1 -> {
@@ -189,13 +189,13 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         return learningPaths.stream()
             .filter(lp -> lp.getIdRuta() == id)
             .findFirst()
-            .orElse(null); // Devuelve null si no encuentra el ID
+            .orElse(null); 
     }
     
     private static void crearActividad(Scanner scanner, Profesor profesor) {
         System.out.print("Ingrese el ID del Learning Path donde desea agregar la actividad: ");
         int idLearningPath = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
        // LearningPath lpSeleccionado = buscarLearningPathPorId(idLearningPath);
         LearningPath lpSeleccionado = profesor.getLearningPaths()
@@ -235,7 +235,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 System.out.print("Ingrese la duración estimada (en minutos): ");
                 int duracion = scanner.nextInt();
                 Date fechaEntrega = solicitarFecha(scanner);
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine(); 
                 nuevaActividad = new Tarea(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null, fechaEntrega);
             }
             case 2 -> {
@@ -251,7 +251,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 int duracion = scanner.nextInt();
                 System.out.print("Ingrese la calificación mínima de quiz ");
             	double calMinima = scanner.nextDouble();
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine(); 
                 nuevaActividad = new Quiz(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null, calMinima, (Double) null);
             }
             case 3 -> {
@@ -267,7 +267,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 int duracion = scanner.nextInt();
                 System.out.print("Ingrese la calificación mínima del examen ");
             	double calMinima = scanner.nextDouble();
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine(); 
                 nuevaActividad = new Examen(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null, calMinima, (Double) null, null);
             }
             case 4 -> {
@@ -281,7 +281,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 String dificultad = scanner.nextLine();
                 System.out.print("Ingrese la duración estimada (en minutos): ");
                 int duracion = scanner.nextInt();
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine(); 
                 nuevaActividad = new Encuesta(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null);
             }
             case 5 -> {
@@ -297,7 +297,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 int duracion = scanner.nextInt();
                 System.out.print("Ingrese el tipo del recurso: ");
                 String tipo = scanner.nextLine();
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine(); 
                 nuevaActividad = new RevisarRecurso(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null, tipo);
             }
             default -> {
@@ -319,7 +319,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
     
     private static Date solicitarFecha(Scanner scanner) {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        formatoFecha.setLenient(false); // Desactiva la tolerancia para fechas no válidas
+        formatoFecha.setLenient(false); 
         Date fecha = null;
 
         while (fecha == null) {
@@ -350,7 +350,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
 
         System.out.print("Seleccione el número del Learning Path para consultar reseñas: ");
         int indexLP = scanner.nextInt() - 1;
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         if (indexLP < 0 || indexLP >= profesor.getLearningPaths().size()) {
             System.out.println("Selección inválida.");
@@ -372,7 +372,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
 
         System.out.print("Seleccione el número de la actividad para ver sus reseñas: ");
         int indexActividad = scanner.nextInt() - 1;
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         if (indexActividad < 0 || indexActividad >= lpSeleccionado.getActividades().size()) {
             System.out.println("Selección inválida.");

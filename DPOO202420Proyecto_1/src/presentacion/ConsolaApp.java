@@ -10,6 +10,7 @@ import java.util.Scanner;
 import logica.Estudiante;
 import logica.LearningPath;
 import logica.Progreso;
+import logica.Actividad;
 //import persistencia.ArchivoSerializable;
 //import persistencia.PersistenciaDatos;
 import persistencia.SerializacionDeArchivo;;
@@ -19,6 +20,7 @@ public class ConsolaApp {
     protected static List<Profesor> profesores = new ArrayList<>();
     protected static List<Estudiante> estudiantes = new ArrayList<>();
     protected static List<LearningPath> learningPaths = new ArrayList<>();
+    protected static List<Actividad> actividades = new ArrayList<>();
     private Estudiante estudiante;
 
     public static void main(String[] args) throws Exception {
@@ -208,6 +210,10 @@ public class ConsolaApp {
             for (LearningPath lp : learningPaths) {
                 System.out.println(lp);
             }
+            
+         // Guardar lista de actividades
+            SerializacionDeArchivo.guardarObjetoSerializable(actividades, "actividades.dat");
+            System.out.println("Actividades guardadas: " + actividades.size());
 
             System.out.println("-----------------------------------------------");
             System.out.println("Datos guardados exitosamente en archivos binarios.");
@@ -245,6 +251,13 @@ public class ConsolaApp {
     	                System.out.println(lp);
     	            }
     	        }
+    	        // Cargar lista de actividades
+                Object actividadesCargadas = SerializacionDeArchivo.leerObjetoSerializable("actividades.dat");
+                if (actividadesCargadas instanceof List) {
+                    actividades = (List<Actividad>) actividadesCargadas;
+                    System.out.println("Actividades cargadas: " + actividades.size());
+                }
+    	        
 
     	        System.out.println("Datos cargados exitosamente desde archivos serializados.");
     	    } catch (Exception e) {

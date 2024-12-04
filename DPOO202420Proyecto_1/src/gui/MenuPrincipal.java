@@ -46,6 +46,15 @@ public class MenuPrincipal  extends JFrame{
 			}
 		});
 		
+		butRegistrarProfesor.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirRegistrarProfesor();
+				
+			}
+		});
+		
 		panelBotones.add(butRegistrarEstudiante);
 		panelBotones.add(butRegistrarProfesor);
 		panelBotones.add(butIniciarSesionEstudiante);
@@ -60,6 +69,11 @@ public class MenuPrincipal  extends JFrame{
 	
 	public void abrirRegistrarEstudiante() {
 		new RegistrarEstudiante().setVisible(true);
+		dispose();
+	}
+	
+	public void abrirRegistrarProfesor() {
+		new RegistrarProfesor().setVisible(true);
 		dispose();
 	}
 	

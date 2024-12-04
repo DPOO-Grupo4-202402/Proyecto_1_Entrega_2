@@ -3,6 +3,8 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -36,6 +38,14 @@ public class MenuPrincipal  extends JFrame{
 		butIniciarSesionProfesorCalificador = new JButton("Iniciar Sesion Como Profesor Calificador");
 		butiniciarSesionProfesorCreador = new JButton("Iniciar Sesion Como Profesor Creador");
 		
+		butRegistrarEstudiante.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirRegistrarEstudiante();
+			}
+		});
+		
 		panelBotones.add(butRegistrarEstudiante);
 		panelBotones.add(butRegistrarProfesor);
 		panelBotones.add(butIniciarSesionEstudiante);
@@ -46,6 +56,11 @@ public class MenuPrincipal  extends JFrame{
 		add(panelBotones, BorderLayout.CENTER);
 		
 		setVisible(true);
+	}
+	
+	public void abrirRegistrarEstudiante() {
+		new RegistrarEstudiante().setVisible(true);
+		dispose();
 	}
 	
 	public static void main(String[] args) {

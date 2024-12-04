@@ -53,7 +53,7 @@ public class ConsolaApp {
         scanner.close();
     }
 
-    private static void registrarEstudiante(Scanner scanner) {
+    public static void registrarEstudiante(Scanner scanner) {
         System.out.print("Nombre del estudiante: ");
         String nombre = scanner.nextLine();
         System.out.print("Email del estudiante: ");
@@ -75,7 +75,7 @@ public class ConsolaApp {
             // }
     }
 
-    private static void registrarProfesor(Scanner scanner) {
+    public static void registrarProfesor(Scanner scanner) {
         System.out.print("Nombre del profesor: ");
         String nombre = scanner.nextLine();
         System.out.print("Email del profesor: ");

@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -89,6 +90,10 @@ public class RegistrarProfesor extends JFrame{
 		add(panelBotones, BorderLayout.SOUTH);
 		
 		setVisible(true);
+	}
+	
+	private void registrarProfesor() {
+		JOptionPane.showMessageDialog(this, "Registrar profesor (Pendiente de Implementar)");
 	}
 
 	private void volverMenuPrincipal() {

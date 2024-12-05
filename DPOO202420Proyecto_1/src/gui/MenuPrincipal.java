@@ -55,6 +55,33 @@ public class MenuPrincipal  extends JFrame{
 			}
 		});
 		
+		butIniciarSesionEstudiante.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirIniciarSesionEstudiante();
+				
+			}
+		});
+		
+		butIniciarSesionProfesorCalificador.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirIniciarSesionProfesorCalificador();
+				
+			}
+		});
+		
+		butiniciarSesionProfesorCreador.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirIniciarSesionProfesorCreador();
+				
+			}
+		});
+		
 		panelBotones.add(butRegistrarEstudiante);
 		panelBotones.add(butRegistrarProfesor);
 		panelBotones.add(butIniciarSesionEstudiante);
@@ -74,6 +101,21 @@ public class MenuPrincipal  extends JFrame{
 	
 	public void abrirRegistrarProfesor() {
 		new RegistrarProfesor().setVisible(true);
+		dispose();
+	}
+	
+	public void abrirIniciarSesionEstudiante() {
+		new IniciarSesionEstudiante().setVisible(true);
+		dispose();
+	}
+	
+	public void abrirIniciarSesionProfesorCalificador(){
+		new IniciarSesionProfesorCalificador().setVisible(true);
+		dispose();
+	}
+	
+	public void abrirIniciarSesionProfesorCreador() {
+		new IniciarSesionProfesorCreador().setVisible(true);
 		dispose();
 	}
 	

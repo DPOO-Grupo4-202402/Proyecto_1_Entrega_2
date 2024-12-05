@@ -7,74 +7,64 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-import logica.Estudiante;
-
-public class RegistrarEstudiante extends JFrame{
+public class IniciarSesionProfesorCreador extends JFrame{
 	
 	private JLabel lblTitulo;
-	private JLabel lblNombre;
 	private JLabel lblEmail;
 	private JLabel lblContrasenia;
-	private JLabel lblIntereses;
-	private JTextField txtNombre;
 	private JTextField txtEmail;
 	private JPasswordField txtContrasenia;
-	private JTextArea txtIntereses;
-	private JButton butRegistrar;
+	private JButton butIngresar;
 	private JButton butVolver;
 	
-	public RegistrarEstudiante() {
+	public IniciarSesionProfesorCreador() {
 		
-		setTitle("Registrar Estudiante");
-		setSize(400, 450);
+		setTitle("Iniciar Sesion como Profesor Creador");
+		setSize(400, 300);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout(10, 10));
 		
-		lblTitulo = new JLabel("Registro de Estudiante", SwingConstants.CENTER);
+		lblTitulo = new JLabel("Inicio de Sesion para Profesores Creadores", SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
 		lblTitulo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(lblTitulo, BorderLayout.NORTH);
 		
-		JPanel panelFormulario = new JPanel(new GridLayout(8, 1, 5, 5));
-		
-		lblNombre = new JLabel("Nombre: ");
-		txtNombre = new JTextField();
+		JPanel panelFormulario = new JPanel(new GridLayout(4, 1, 5, 5));
 		
 		lblEmail = new JLabel("Email: ");
 		txtEmail = new JTextField();
 		
-		lblContrasenia = new JLabel("Contrasenia: ");
+		lblContrasenia =  new JLabel("Contrasenia: ");
 		txtContrasenia = new JPasswordField();
 		
-		lblIntereses = new JLabel("Intereses: ");
-		txtIntereses = new JTextArea(3, 20);
-		txtIntereses.setLineWrap(true);
-		txtIntereses.setWrapStyleWord(true);
-		JScrollPane scrollIntereses = new JScrollPane(txtIntereses);
-		
-		panelFormulario.add(lblNombre);
-		panelFormulario.add(txtNombre);
 		panelFormulario.add(lblEmail);
 		panelFormulario.add(txtEmail);
 		panelFormulario.add(lblContrasenia);
 		panelFormulario.add(txtContrasenia);
-		panelFormulario.add(lblIntereses);
-		panelFormulario.add(scrollIntereses);
 		
 		add(panelFormulario, BorderLayout.CENTER);
 		
 		JPanel panelBotones = new JPanel(new FlowLayout());
-		butRegistrar = new JButton("Registrar");
+		
+		butIngresar = new JButton("Ingresar");
 		butVolver = new JButton("Volver al Menu Principal");
 		
-		butRegistrar.addActionListener(new ActionListener() {
+		butIngresar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				registrarEstudiante();	
+				iniciarSesion();	
 			}
 		});
 		
@@ -87,17 +77,19 @@ public class RegistrarEstudiante extends JFrame{
 			}
 		});
 		
-		panelBotones.add(butRegistrar);
+		panelBotones.add(butIngresar);
 		panelBotones.add(butVolver);
+		
 		add(panelBotones, BorderLayout.SOUTH);
 		
 		setVisible(true);
 	}
 	
-	private void registrarEstudiante() {
-		JOptionPane.showMessageDialog(this, "Registrar estudiante (Pendiente de Implementar)");
+	private void iniciarSesion(){
+		JOptionPane.showMessageDialog(this, "Iniciar Sesion (Pendiente de Implementar)");
 	}
-
+	
+	
 	private void volverMenuPrincipal() {
 		MenuPrincipal menu = new MenuPrincipal();
 		menu.setVisible(true);
@@ -106,25 +98,9 @@ public class RegistrarEstudiante extends JFrame{
 	
 	public static void main(String[] args) {
 		
-		new RegistrarEstudiante();
+		new IniciarSesionProfesorCreador();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 
 }

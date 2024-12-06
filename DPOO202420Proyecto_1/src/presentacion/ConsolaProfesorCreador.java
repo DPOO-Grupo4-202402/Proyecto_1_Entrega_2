@@ -2,6 +2,7 @@ package presentacion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 import logica.LearningPath;
@@ -234,7 +235,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
                 String dificultad = scanner.nextLine();
                 System.out.print("Ingrese la duración estimada (en minutos): ");
                 int duracion = scanner.nextInt();
-                Date fechaEntrega = solicitarFecha(scanner);
+                LocalDate fechaEntrega = solicitarFecha(scanner);
                 scanner.nextLine(); 
                 nuevaActividad = new Tarea(Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivo, dificultad, duracion, "pendiente", null, null, null, fechaEntrega);
             }
@@ -319,10 +320,10 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         }
     } 
     
-    private static Date solicitarFecha(Scanner scanner) {
+    private static LocalDate solicitarFecha(Scanner scanner) {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         formatoFecha.setLenient(false); 
-        Date fecha = null;
+        LocalDate fecha = null;
 
         while (fecha == null) {
             System.out.print("Ingrese la fecha de entrega (formato dd/MM/yyyy): ");

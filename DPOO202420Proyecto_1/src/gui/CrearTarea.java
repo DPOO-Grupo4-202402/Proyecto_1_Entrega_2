@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import logica.Actividad;
 import logica.LearningPath;
@@ -17,11 +16,8 @@ import presentacion.ConsolaProfesorCreador;
 
 public class CrearTarea extends JFrame {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JTextField txtTitulo;
+    private static final long serialVersionUID = 1L;
+    private JTextField txtTitulo;
     private JTextArea txtDescripcion;
     private JTextField txtObjetivos;
     private JTextField txtDificultad;
@@ -87,9 +83,7 @@ public class CrearTarea extends JFrame {
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
-					guardarTarea();
-				
+                guardarTarea();
             }
         });
 
@@ -115,7 +109,6 @@ public class CrearTarea extends JFrame {
         String duracionStr = txtDuracion.getText().trim();
         String fechaEntregaStr = txtFechaEntrega.getText().trim();
 
-       
         if (titulo.isEmpty() || descripcion.isEmpty() || objetivos.isEmpty() || dificultad.isEmpty()
                 || duracionStr.isEmpty() || fechaEntregaStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -123,41 +116,53 @@ public class CrearTarea extends JFrame {
         }
 
         int duracion;
-        Date fechaEntrega;
+        LocalDate fechaEntrega;
         try {
             duracion = Integer.parseInt(duracionStr);
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-            formatoFecha.setLenient(false);
-            fechaEntrega = formatoFecha.parse(fechaEntregaStr);
+            fechaEntrega = parsearFecha(fechaEntregaStr);
+            if (fechaEntrega == null) return; // Fecha inválida
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La duración debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this, "La fecha de entrega debe tener el formato dd/MM/yyyy.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Crear la nueva tarea
         Actividad nuevaTarea = new Tarea(
-                Actividad.getActividadesExistentes().size() + 1, titulo, descripcion, objetivos, dificultad, duracion, "pendiente", null, null, null, fechaEntrega);
+                Actividad.getActividadesExistentes().size() + 1, 
+                titulo, 
+                descripcion, 
+                objetivos, 
+                dificultad, 
+                duracion, 
+                "pendiente", 
+                null, 
+                null, 
+                null, 
+                fechaEntrega
+        );
 
-        // Agregar la tarea al Learning Path y al sistema
         try {
-        	LearningPath lpListaGeneral = ConsolaProfesorCreador.buscarLearningPathPorId(learningPath.getIdRuta());
-			lpListaGeneral.agregarActividad(nuevaTarea);
-			profesor.agregarActividadAlLearningPath(learningPath, nuevaTarea);
-	        ConsolaApp.getActividades().add(nuevaTarea);
-	        System.out.println(ConsolaApp.getActividades());
-	        ConsolaApp.guardarDatos();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Error al agregar la actividad: " + e.getMessage());
-		}
-        
+            LearningPath lpListaGeneral = ConsolaProfesorCreador.buscarLearningPathPorId(learningPath.getIdRuta());
+            lpListaGeneral.agregarActividad(nuevaTarea);
+            profesor.agregarActividadAlLearningPath(learningPath, nuevaTarea);
+            ConsolaApp.getActividades().add(nuevaTarea);
+            ConsolaApp.guardarDatos();
+            JOptionPane.showMessageDialog(this, "Tarea creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al guardar la tarea: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-        JOptionPane.showMessageDialog(this, "Tarea creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        limpiarCampos();
+    private LocalDate parsearFecha(String fechaStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            return LocalDate.parse(fechaStr, formatter);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Formato de fecha inválido, debe ser dd/MM/yyyy", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     private void limpiarCampos() {
@@ -174,3 +179,4 @@ public class CrearTarea extends JFrame {
         dispose();
     }
 }
+

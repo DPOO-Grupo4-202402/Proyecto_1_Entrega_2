@@ -1,6 +1,7 @@
 package logica;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ public class Tarea extends Actividad implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Date fechaEntrega;
+	private LocalDate fechaEntrega;
 	private String estado;
 
 	public Tarea(int idActividad, 
@@ -23,23 +24,23 @@ public class Tarea extends Actividad implements Serializable{
 			ArrayList<Resenia> resenias,
 			ArrayList<Actividad> actividadesPrevias, 
 			ArrayList<LearningPath> learningPaths, 
-			Date fechaEntrega) {
+			LocalDate fechaEntrega) {
 		super(idActividad, titulo, descripcion, objetivos, dificultad, resultado);
 		this.fechaEntrega = fechaEntrega;
 		this.setEstado("Enviada");
 	}
 
-	public Date getFechaEntrega() {
+	public LocalDate getFechaEntrega() {
 		return fechaEntrega;
 	}
 
-	public void setFechaEntrega(Date fechaEntrega) {
+	public void setFechaEntrega(LocalDate fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
 
 	//Metodos para manejar entregas.
-	public boolean entregadaATiempo(Date fechaEntregaEstudiante) {
-		return !fechaEntregaEstudiante.after(this.fechaEntrega);
+	public boolean entregadaATiempo(LocalDate fechaEntregaEstudiante) {
+		return !fechaEntregaEstudiante.isAfter(this.fechaEntrega);
 	}
 
 	public void marcarExitosa() {

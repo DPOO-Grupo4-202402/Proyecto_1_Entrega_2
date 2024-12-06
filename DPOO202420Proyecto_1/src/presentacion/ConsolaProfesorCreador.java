@@ -109,10 +109,10 @@ public class ConsolaProfesorCreador extends ConsolaApp {
          String objetivos = scanner.nextLine();
          System.out.println("Dificultad del Learning Path: ");
          String dificultad = scanner.nextLine();
-         LearningPath lp = new LearningPath(learningPaths.size() + 1, nombre, descripcion, objetivos, dificultad);
-         learningPaths.add(lp);
+         LearningPath lp = new LearningPath(getLearningPaths().size() + 1, nombre, descripcion, objetivos, dificultad);
+         getLearningPaths().add(lp);
          System.out.println("Learning Path creado exitosamente. el otro");
-         profesor.crearLearningPath(learningPaths.size(), nombre, descripcion, objetivos, dificultad);
+         profesor.crearLearningPath(getLearningPaths().size(), nombre, descripcion, objetivos, dificultad);
          System.out.println(profesor.getLearningPaths());
          guardarDatos();
     }
@@ -186,7 +186,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
     }
 
     public static LearningPath buscarLearningPathPorId(int id) {
-        return learningPaths.stream()
+        return getLearningPaths().stream()
             .filter(lp -> lp.getIdRuta() == id)
             .findFirst()
             .orElse(null); 
@@ -310,8 +310,8 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         	LearningPath lpListaGeneral = buscarLearningPathPorId(lpSeleccionado.getIdRuta());
             lpListaGeneral.agregarActividad(nuevaActividad);
             profesor.agregarActividadAlLearningPath(lpSeleccionado, nuevaActividad);
-            actividades.add(nuevaActividad);
-            System.out.println(actividades);
+            getActividades().add(nuevaActividad);
+            System.out.println(getActividades());
             guardarDatos();
             System.out.println("Actividad creada y agregada exitosamente.");
         } catch (Exception e) {

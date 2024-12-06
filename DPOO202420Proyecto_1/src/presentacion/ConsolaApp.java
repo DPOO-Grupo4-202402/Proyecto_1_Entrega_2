@@ -20,8 +20,8 @@ public class ConsolaApp {
 	
     private static List<Profesor> profesores = new ArrayList<>();
     private static List<Estudiante> estudiantes = new ArrayList<>();
-    protected static List<LearningPath> learningPaths = new ArrayList<>();
-    protected static List<Actividad> actividades = new ArrayList<>();
+    private static List<LearningPath> learningPaths = new ArrayList<>();
+    private static List<Actividad> actividades = new ArrayList<>();
     protected static List<Progreso> progresos = new ArrayList<>();
     private Estudiante estudiante;
 
@@ -130,14 +130,14 @@ public class ConsolaApp {
             }
 
             // Guardar lista de learning paths
-            SerializacionDeArchivo.guardarObjetoSerializable(learningPaths, "LearningPaths.dat");
-            for (LearningPath lp : learningPaths) {
+            SerializacionDeArchivo.guardarObjetoSerializable(getLearningPaths(), "LearningPaths.dat");
+            for (LearningPath lp : getLearningPaths()) {
                 System.out.println(lp);
             }
             
          // Guardar lista de actividades
-            SerializacionDeArchivo.guardarObjetoSerializable(actividades, "actividades.dat");
-            for (Actividad actividad : actividades) {
+            SerializacionDeArchivo.guardarObjetoSerializable(getActividades(), "actividades.dat");
+            for (Actividad actividad : getActividades()) {
                 System.out.println(actividad);
             }
             
@@ -175,15 +175,15 @@ public class ConsolaApp {
     	        // Cargar lista de Learning Paths desde archivo serializado
     	        Object learningPathsObjeto = SerializacionDeArchivo.leerObjetoSerializable("LearningPaths.dat");
     	        if (learningPathsObjeto instanceof List<?>) {
-    	            learningPaths = (List<LearningPath>) learningPathsObjeto;
-    	            for (LearningPath lp : learningPaths) {
+    	            setLearningPaths((List<LearningPath>) learningPathsObjeto);
+    	            for (LearningPath lp : getLearningPaths()) {
     	                System.out.println(lp);
     	            }
     	        }
     	        // Cargar lista de actividades
                 Object actividadesCargadas = SerializacionDeArchivo.leerObjetoSerializable("actividades.dat");
                 if (actividadesCargadas instanceof List) {
-                    actividades = (List<Actividad>) actividadesCargadas;
+                    setActividades((List<Actividad>) actividadesCargadas);
                     //System.out.println("Actividades cargadas: " + actividades.size());
                 }
     	        
@@ -214,6 +214,22 @@ public class ConsolaApp {
 
 	public static void setEstudiantes(List<Estudiante> estudiantes) {
 		ConsolaApp.estudiantes = estudiantes;
+	}
+
+	public static List<LearningPath> getLearningPaths() {
+		return learningPaths;
+	}
+
+	public static void setLearningPaths(List<LearningPath> learningPaths) {
+		ConsolaApp.learningPaths = learningPaths;
+	}
+
+	public static List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public static void setActividades(List<Actividad> actividades) {
+		ConsolaApp.actividades = actividades;
 	}
       
       

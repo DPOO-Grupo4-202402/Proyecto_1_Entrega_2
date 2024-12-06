@@ -105,8 +105,9 @@ public class IniciarSesionProfesorCreador extends JFrame{
 	            if (profesor.getContrasenia().equals(contrasenia)) {
 	                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso. Bienvenido(a), " + profesor.getNombre() + "!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 	                
-	                MenuProfesorCreador menuCreador = new MenuProfesorCreador();
+	                MenuProfesorCreador menuCreador = new MenuProfesorCreador(profesor);
 	                menuCreador.setVisible(true);
+	                dispose();
 	                
 	                return; 
 	            } else {

@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import logica.Profesor;
+
 public class MenuProfesorCreador extends JFrame{
 	
 	private JLabel lblTitulo;
@@ -22,11 +24,13 @@ public class MenuProfesorCreador extends JFrame{
 	private JButton butCrearActividad;
 	private JButton butVerResenias;
 	private JButton butCerrarSesion;
+	private Profesor profesor;
 	
-	public MenuProfesorCreador() {
+	public MenuProfesorCreador(Profesor profesor) {
+		this.profesor = profesor;
 
 		
-		setTitle("Menu de Profesor Creador");
+		setTitle("Menu de Profesor Creador " + profesor.getNombre());
 		setSize(400, 350);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -102,20 +106,32 @@ public class MenuProfesorCreador extends JFrame{
 	}
 	
 	private void crearLearningPaths() {
-		JOptionPane.showMessageDialog(this, "Crear un Nuevo Learning Path (Pendiente de Implementar)");
+		
+		CrearLearningPath crearLP = new CrearLearningPath(profesor);
+		crearLP.setVisible(true);
+		dispose();
 	
 	}
 	
 	private void editarLearningPaths() {
-		JOptionPane.showMessageDialog(this, "Editar un Learning Path (Pendiente de Implementar)");
+		
+		EditarLearningPath editarLP = new EditarLearningPath(profesor);
+		editarLP.setVisible(true);
+		dispose();
 	}
 	
 	private void crearActividad() {
-		JOptionPane.showMessageDialog(this, "Crear una nueva Actividad (Pendiente de Implementar)");
+		
+		CrearActividad crearA = new CrearActividad(profesor);
+		crearA.setVisible(true);
+		dispose();
 	}
 	
 	private void verResenias() {
-		JOptionPane.showMessageDialog(this, "Ver Resenias de una Actividad (Pendiente de Implementar)");
+		
+		VerResenias verR = new VerResenias(profesor);
+		verR.setVisible(true);
+		dispose();
 
 	}
 	
@@ -123,11 +139,6 @@ public class MenuProfesorCreador extends JFrame{
 		MenuPrincipal menu = new MenuPrincipal();
 		menu.setVisible(true);
 		dispose();
-	}
-	
-	public static void main(String[] args) {
-		
-		new MenuProfesorCreador();
 	}
 	
 

@@ -103,7 +103,7 @@ public class ConsolaEstudiante extends ConsolaApp {
 
     private static void inscribirseEnLearningPath(Scanner scanner, Estudiante estudiante) {
         System.out.println("\n--- Learning Paths Disponibles ---");
-        for (LearningPath lp : learningPaths) { // learningPaths se hereda de ConsolaApp
+        for (LearningPath lp : getLearningPaths()) { // learningPaths se hereda de ConsolaApp
             System.out.println("ID: " + lp.getIdRuta() + " | Título: " + lp.getTitulo());
         }
 
@@ -129,7 +129,7 @@ public class ConsolaEstudiante extends ConsolaApp {
     }
 
     public static LearningPath buscarLearningPathPorId(int id) {
-        return learningPaths.stream()
+        return getLearningPaths().stream()
             .filter(lp -> lp.getIdRuta() == id)
             .findFirst()
             .orElse(null); // Devuelve null si no encuentra el ID

@@ -94,7 +94,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
 
     private static void verEstudiantesEnLearningPath(Scanner scanner) {
         System.out.println("\n--- Learning Paths Disponibles ---");
-        for (LearningPath lp : learningPaths) { 
+        for (LearningPath lp : getLearningPaths()) { 
             System.out.println("ID: " + lp.getIdRuta() + " | Título: " + lp.getTitulo());
         }
 
@@ -127,7 +127,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
     }
 
     public static LearningPath buscarLearningPathPorId(int id) {
-        return learningPaths.stream()
+        return getLearningPaths().stream()
             .filter(lp -> lp.getIdRuta() == id)
             .findFirst()
             .orElse(null); 

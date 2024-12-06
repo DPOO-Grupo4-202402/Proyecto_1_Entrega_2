@@ -96,8 +96,9 @@ public class IniciarSesionEstudiante extends JFrame{
 	            if (estudiante.getContrasenia().equals(contrasenia)) {
 	                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso. Bienvenido(a), " + estudiante.getNombre() + "!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 	                
-	                MenuEstudiante menuEstu = new MenuEstudiante();
+	                MenuEstudiante menuEstu = new MenuEstudiante(estudiante);
 	                menuEstu.setVisible(true);
+	                dispose();
 	                
 	                return; 
 	            } else {

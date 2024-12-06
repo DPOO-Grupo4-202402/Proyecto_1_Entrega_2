@@ -223,4 +223,14 @@ public abstract class Actividad implements Serializable{
 	public ArrayList<Resenia> listaDeResenias(){
 		return this.resenias;	
 	}
-}	
+	
+
+
+
+
+@Override
+public String toString() {
+    return titulo;
+}
+
+}

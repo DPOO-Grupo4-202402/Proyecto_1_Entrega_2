@@ -105,8 +105,9 @@ public class IniciarSesionProfesorCalificador extends JFrame{
 	            if (profesor.getContrasenia().equals(contrasenia)) {
 	                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso. Bienvenido(a), " + profesor.getNombre() + "!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 	                
-	                MenuProfesorCalificador menuCalificador = new MenuProfesorCalificador();
+	                MenuProfesorCalificador menuCalificador = new MenuProfesorCalificador(profesor);
 	                menuCalificador.setVisible(true);
+	                dispose();
 	                
 	                return; 
 	            } else {

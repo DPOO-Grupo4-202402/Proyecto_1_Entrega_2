@@ -7,7 +7,11 @@ import logica.Profesor;
 
 public class CrearActividad extends JFrame {
 
-    private Profesor profesor;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Profesor profesor;
     private JComboBox<LearningPath> comboLearningPaths;
     private JButton btnTarea;
     private JButton btnQuiz;

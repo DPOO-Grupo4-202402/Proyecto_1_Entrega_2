@@ -166,4 +166,19 @@ public class LearningPath implements Serializable{
 		}
 		
 
+
+
+@Override
+public boolean equals(Object obj) {
+    if (this == obj) return true; // Compara la misma instancia
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    LearningPath lp = (LearningPath) obj;
+    return this.idRuta == lp.idRuta; // Comparar por el identificador
+}
+
+@Override
+public int hashCode() {
+    return Integer.hashCode(idRuta); // Generar un hash usando el identificador
+}
 }

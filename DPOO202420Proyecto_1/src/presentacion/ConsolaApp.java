@@ -199,6 +199,13 @@ public class ConsolaApp {
     	        System.out.println("Error al cargar los datos: " + e.getMessage());
     	    }
     	}
+      
+      public static LearningPath buscarLearningPathPorId(int id) {
+          return getLearningPaths().stream()
+              .filter(lp -> lp.getIdRuta() == id)
+              .findFirst()
+              .orElse(null); // Devuelve null si no encuentra el ID
+      }
 
 	public static List<Profesor> getProfesores() {
 		return profesores;

@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import logica.Profesor;
+
 public class MenuProfesorCalificador extends JFrame{
 	
 	private JLabel lblTitulo;
@@ -22,11 +24,13 @@ public class MenuProfesorCalificador extends JFrame{
 	private JButton butRevisarProgreso;
 	private JButton butAgregarResenia;
 	private JButton butCerrarSesion;
+	private Profesor profesor;
 	
-	public MenuProfesorCalificador() {
+	public MenuProfesorCalificador(Profesor profesor) {
+		this.profesor = profesor;
 
 		
-		setTitle("Menu de Profesor Calificador");
+		setTitle("Menu de Profesor Calificador " + profesor.getNombre());
 		setSize(400, 350);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -102,20 +106,33 @@ public class MenuProfesorCalificador extends JFrame{
 	}
 	
 	private void verLearningPaths() {
-		JOptionPane.showMessageDialog(this, "Ver estudiantes Insctritos en un Learning Path (Pendiente de Implementar)");
+		
+		VerEstEnLearningPath verLP = new VerEstEnLearningPath(profesor);
+		verLP.setVisible(true);
+		dispose();
 	
 	}
 	
 	private void evaluarActividades() {
-		JOptionPane.showMessageDialog(this, "Evaluar actividades de un estudiante (Pendiente de Implementar)");
+		
+		EvaluarActividades evaluarAct = new EvaluarActividades(profesor);
+		evaluarAct.setVisible(true);
+		dispose();
 	}
 	
 	private void revisarProgreso() {
-		JOptionPane.showMessageDialog(this, "Revisar Progreso de un estudiante (Pendiente de Implementar)");
+		
+		RevisarProgresoEst revisarProgreso = new RevisarProgresoEst(profesor);
+		revisarProgreso.setVisible(true);
+		dispose();
 	}
 	
 	private void agregarResenia() {
-		JOptionPane.showMessageDialog(this, "Agregar Resenia a una Actividad (Pendiente de Implementar)");
+		
+		AgregarResenia agregarR = new AgregarResenia(profesor);
+		agregarR.setVisible(true);
+		dispose();
+
 
 	}
 	
@@ -124,11 +141,4 @@ public class MenuProfesorCalificador extends JFrame{
 		menu.setVisible(true);
 		dispose();
 	}
-	
-	public static void main(String[] args) {
-		
-		new MenuProfesorCalificador();
-	}
-	
-
 }

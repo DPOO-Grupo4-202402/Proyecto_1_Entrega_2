@@ -14,6 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import guiParaEstudiantes.InscribirseEnLp;
+import guiParaEstudiantes.RevisarMiProgreso;
+import guiParaEstudiantes.VerLpInscritos;
+import logica.Estudiante;
+
 public class MenuEstudiante extends JFrame{
 	
 	private JLabel lblTitulo;
@@ -22,10 +27,12 @@ public class MenuEstudiante extends JFrame{
 	private JButton butRevisarProgreso;
 	private JButton butAgregarResenia;
 	private JButton butCerrarSesion;
+	private Estudiante estudiante;
 	
-	public MenuEstudiante() {
+	public MenuEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
 		
-		setTitle("Menu del Estudiante");
+		setTitle("Menu del Estudiante " + estudiante.getNombre());
 		setSize(400, 350);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -101,20 +108,32 @@ public class MenuEstudiante extends JFrame{
 	}
 	
 	private void verLearningPaths() {
-		JOptionPane.showMessageDialog(this, "Ver Learning Paths Inscritos (Pendiente de Implementar)");
+		
+		VerLpInscritos verLP = new VerLpInscritos(estudiante);
+		verLP.setVisible(true);
+		dispose();
 	
 	}
 	
 	private void inscribirLearningPath() {
-		JOptionPane.showMessageDialog(this, "Inscribir Learning Path (Pendiente de Implementar)");
+		
+		InscribirseEnLp inscribirLP = new InscribirseEnLp(estudiante);
+		inscribirLP.setVisible(true);
+		dispose();
 	}
 	
 	private void revisarProgreso() {
-		JOptionPane.showMessageDialog(this, "Revisar Progreso (Pendiente de Implementar)");
+		
+		RevisarMiProgreso revisarProgreso = new RevisarMiProgreso(estudiante);
+		revisarProgreso.setVisible(true);
+		dispose();
 	}
 	
 	private void agregarResenia() {
-		JOptionPane.showMessageDialog(this, "Agregar Resenia a una Actividad (Pendiente de Implementar)");
+		
+		AgregarResenia agregarR = new AgregarResenia(estudiante);
+		agregarR.setVisible(true);
+		dispose();
 
 	}
 	
@@ -124,9 +143,5 @@ public class MenuEstudiante extends JFrame{
 		dispose();
 	}
 	
-	public static void main(String[] args) {
-		
-		new MenuEstudiante();
-	}
 	
 }

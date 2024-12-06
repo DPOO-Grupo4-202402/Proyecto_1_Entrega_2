@@ -51,7 +51,7 @@ public class ConsolaEstudiante extends ConsolaApp {
         System.out.print("Ingrese su contraseña: ");
         String contrasenia = scanner.nextLine();
 
-        for (Estudiante estudiante : estudiantes) { // estudiantes se hereda de ConsolaApp
+        for (Estudiante estudiante : getEstudiantes()) { // estudiantes se hereda de ConsolaApp
             if (estudiante.getNombre().equalsIgnoreCase(nombreUsuario)){
             		if (estudiante.getContrasenia().equals(contrasenia)) {
                         

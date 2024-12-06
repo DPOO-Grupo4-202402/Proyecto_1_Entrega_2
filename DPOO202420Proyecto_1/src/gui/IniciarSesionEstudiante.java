@@ -1,6 +1,11 @@
 package gui;
 
 import javax.swing.*;
+
+import logica.Estudiante;
+import logica.Profesor;
+import presentacion.ConsolaApp;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,7 +79,36 @@ public class IniciarSesionEstudiante extends JFrame{
 	}
 	
 	private void iniciarSesion(){
-		JOptionPane.showMessageDialog(this, "Iniciar Sesion (Pendiente de Implementar)");
+		
+		String email = txtEmail.getText().trim();
+	    String contrasenia = new String(txtContrasenia.getPassword()).trim();
+	    
+
+	    
+	    if (email.isEmpty() || contrasenia.isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
+
+	    
+	    for (Estudiante estudiante : ConsolaApp.getEstudiantes()) {
+	        if (estudiante.getEmail().equalsIgnoreCase(email)) {
+	            if (estudiante.getContrasenia().equals(contrasenia)) {
+	                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso. Bienvenido(a), " + estudiante.getNombre() + "!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	                
+	                MenuEstudiante menuEstu = new MenuEstudiante();
+	                menuEstu.setVisible(true);
+	                
+	                return; 
+	            } else {
+	                JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+	                return;
+	            }
+	        }
+	    }
+
+	    
+	    JOptionPane.showMessageDialog(this, "No se encuentra un estudiante con ese email.", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	private void volverMenuPrincipal() {

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import logica.Estudiante;
+import presentacion.ConsolaApp;
 
 public class RegistrarEstudiante extends JFrame{
 	
@@ -95,7 +96,30 @@ public class RegistrarEstudiante extends JFrame{
 	}
 	
 	private void registrarEstudiante() {
-		JOptionPane.showMessageDialog(this, "Registrar estudiante (Pendiente de Implementar)");
+		
+		String nombre = txtNombre.getText().trim();
+	    String email = txtEmail.getText().trim();
+	    String contrasenia = new String(txtContrasenia.getPassword()).trim();
+	    String intereses = txtIntereses.getText().trim();
+	    
+	    if (nombre.isEmpty() || email.isEmpty() || contrasenia.isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
+	    
+	    Estudiante nuevoEstudiante = new Estudiante(ConsolaApp.getEstudiantes().size() + 1, nombre, email, contrasenia, intereses);
+	    ConsolaApp.getEstudiantes().add(nuevoEstudiante);
+	    
+	    ConsolaApp.guardarDatos();
+	    JOptionPane.showMessageDialog(this, "Estudiante registrado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		limpiarCampos();
+	}
+	
+	public void limpiarCampos() {
+	    txtNombre.setText("");
+	    txtEmail.setText("");
+	    txtContrasenia.setText("");
+	    txtIntereses.setText("");
 	}
 
 	private void volverMenuPrincipal() {

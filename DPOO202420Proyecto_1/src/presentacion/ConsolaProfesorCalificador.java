@@ -51,7 +51,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
         System.out.print("Ingrese su contraseña: ");
         String contrasenia = scanner.nextLine();
         
-        for (Profesor profesor : profesores) {  
+        for (Profesor profesor : getProfesores()) {  
         	 if (profesor.getNombre().equalsIgnoreCase(nombreUsuario)) {
                  if (profesor.getContrasenia().equals(contrasenia)) {
                      
@@ -113,7 +113,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
         boolean estudiantesEncontrados = false;
         System.out.println(lpSeleccionado);
 
-        for (Estudiante estudiante : estudiantes) {
+        for (Estudiante estudiante : getEstudiantes()) {
         	System.out.println(estudiante.getLearningPaths());
             if (estudiante.getLearningPaths().contains(lpSeleccionado)) {
                 System.out.println("ID: " + estudiante.getId() + " | Nombre: " + estudiante.getNombre());
@@ -138,7 +138,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
         int idEstudiante = scanner.nextInt();
         scanner.nextLine(); 
 
-        Estudiante estudianteSeleccionado = estudiantes.stream()
+        Estudiante estudianteSeleccionado = getEstudiantes().stream()
             .filter(est -> est.getId() == idEstudiante)
             .findFirst()
             .orElse(null);
@@ -160,7 +160,7 @@ public class ConsolaProfesorCalificador extends ConsolaApp {
         int idEstudiante = scanner.nextInt();
         scanner.nextLine();
 
-        Estudiante estudianteSeleccionado = estudiantes.stream()
+        Estudiante estudianteSeleccionado = getEstudiantes().stream()
             .filter(est -> est.getId() == idEstudiante)
             .findFirst()
             .orElse(null);

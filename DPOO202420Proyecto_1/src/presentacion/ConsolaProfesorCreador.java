@@ -59,7 +59,7 @@ public class ConsolaProfesorCreador extends ConsolaApp {
         System.out.print("Ingrese su contraseña: ");
         String contrasenia = scanner.nextLine();
         
-        for (Profesor profesor : profesores) {  
+        for (Profesor profesor : getProfesores()) {  
         	 if (profesor.getNombre().equalsIgnoreCase(nombreUsuario)) {
                  if (profesor.getContrasenia().equals(contrasenia)) {
                      

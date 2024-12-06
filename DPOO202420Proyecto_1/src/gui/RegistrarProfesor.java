@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,6 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import logica.Profesor;
+import presentacion.ConsolaApp;
 
 public class RegistrarProfesor extends JFrame{
 	
@@ -92,8 +96,31 @@ public class RegistrarProfesor extends JFrame{
 		setVisible(true);
 	}
 	
-	private void registrarProfesor() {
-		JOptionPane.showMessageDialog(this, "Registrar profesor (Pendiente de Implementar)");
+	private void registrarProfesor(){
+		
+		String nombre = txtNombre.getText().trim();
+	    String email = txtEmail.getText().trim();
+	    String contrasenia = new String(txtContrasenia.getPassword()).trim();
+
+	    
+	    if (nombre.isEmpty() || email.isEmpty() || contrasenia.isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
+
+	    
+	    Profesor nuevoProfesor = new Profesor(ConsolaApp.getProfesores().size() + 1, nombre, email, contrasenia);
+	    ConsolaApp.getProfesores().add(nuevoProfesor);
+
+	    ConsolaApp.guardarDatos();
+		JOptionPane.showMessageDialog(this, "Profesor registrado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		limpiarCampos();
+	}
+
+	public void limpiarCampos() {
+	    txtNombre.setText("");
+	    txtEmail.setText("");
+	    txtContrasenia.setText("");
 	}
 
 	private void volverMenuPrincipal() {

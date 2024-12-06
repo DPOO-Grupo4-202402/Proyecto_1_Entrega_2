@@ -18,8 +18,8 @@ import persistencia.SerializacionDeArchivo;;
 
 public class ConsolaApp {
 	
-    protected static List<Profesor> profesores = new ArrayList<>();
-    protected static List<Estudiante> estudiantes = new ArrayList<>();
+    private static List<Profesor> profesores = new ArrayList<>();
+    private static List<Estudiante> estudiantes = new ArrayList<>();
     protected static List<LearningPath> learningPaths = new ArrayList<>();
     protected static List<Actividad> actividades = new ArrayList<>();
     protected static List<Progreso> progresos = new ArrayList<>();
@@ -63,8 +63,8 @@ public class ConsolaApp {
         System.out.println("Intereses del estudiante: ");
         String intereses = scanner.nextLine();
 
-        Estudiante estudiante = new Estudiante(estudiantes.size() + 1, nombre, email, password, intereses);
-        estudiantes.add(estudiante);
+        Estudiante estudiante = new Estudiante(getEstudiantes().size() + 1, nombre, email, password, intereses);
+        getEstudiantes().add(estudiante);
         System.out.println("Estudiante registrado exitosamente.");
         //  try {
         //	SerializacionDeArchivo.guardarObjetoSerializable(estudiante, "Estudiantes.csv");
@@ -83,8 +83,8 @@ public class ConsolaApp {
         System.out.print("Contraseña: ");
         String password = scanner.nextLine();
 
-        Profesor profesor = new Profesor(profesores.size() + 1, nombre, email, password);
-        profesores.add(profesor);
+        Profesor profesor = new Profesor(getProfesores().size() + 1, nombre, email, password);
+        getProfesores().add(profesor);
         System.out.println("Profesor registrado exitosamente.");
         // try {
         //	SerializacionDeArchivo.guardarObjetoSerializable(profesor, "Profesores.csv");
@@ -114,18 +114,18 @@ public class ConsolaApp {
     //    }
     //  }
     
-    protected static void guardarDatos() {
+    public static void guardarDatos() {
         try {
         	System.out.println("\n"+"-----------------------------------------------");
             // Guardar lista de estudiantes
-            SerializacionDeArchivo.guardarObjetoSerializable(estudiantes, "Estudiantes.dat");
-            for (Estudiante estudiante : estudiantes) {
+            SerializacionDeArchivo.guardarObjetoSerializable(getEstudiantes(), "Estudiantes.dat");
+            for (Estudiante estudiante : getEstudiantes()) {
                 System.out.println(estudiante);
             }
 
             // Guardar lista de profesores
-            SerializacionDeArchivo.guardarObjetoSerializable(profesores, "Profesores.dat");
-            for (Profesor profesor : profesores) {
+            SerializacionDeArchivo.guardarObjetoSerializable(getProfesores(), "Profesores.dat");
+            for (Profesor profesor : getProfesores()) {
                 System.out.println(profesor);
             }
 
@@ -151,13 +151,13 @@ public class ConsolaApp {
         }
     }
 
-      protected static void cargarDatos() {
+      public static void cargarDatos() {
     	  try {
     	        // Cargar lista de estudiantes desde archivo serializado
     	        Object estudiantesObjeto = SerializacionDeArchivo.leerObjetoSerializable("Estudiantes.dat");
     	        if (estudiantesObjeto instanceof List<?>) {
-    	            estudiantes = (List<Estudiante>) estudiantesObjeto;
-    	            for (Estudiante estudiante : estudiantes) {
+    	            setEstudiantes((List<Estudiante>) estudiantesObjeto);
+    	            for (Estudiante estudiante : getEstudiantes()) {
     	                System.out.println(estudiante);
     	            }
     	   
@@ -166,8 +166,8 @@ public class ConsolaApp {
     	        // Cargar lista de profesores desde archivo serializado
     	        Object profesoresObjeto = SerializacionDeArchivo.leerObjetoSerializable("Profesores.dat");
     	        if (profesoresObjeto instanceof List<?>) {
-    	            profesores = (List<Profesor>) profesoresObjeto;
-    	            for (Profesor profesor : profesores) {
+    	            setProfesores((List<Profesor>) profesoresObjeto);
+    	            for (Profesor profesor : getProfesores()) {
     	                System.out.println(profesor);
     	            }
     	        }
@@ -199,6 +199,22 @@ public class ConsolaApp {
     	        System.out.println("Error al cargar los datos: " + e.getMessage());
     	    }
     	}
+
+	public static List<Profesor> getProfesores() {
+		return profesores;
+	}
+
+	public static void setProfesores(List<Profesor> profesores) {
+		ConsolaApp.profesores = profesores;
+	}
+
+	public static List<Estudiante> getEstudiantes() {
+		return estudiantes;
+	}
+
+	public static void setEstudiantes(List<Estudiante> estudiantes) {
+		ConsolaApp.estudiantes = estudiantes;
+	}
       
       
 }

@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import presentacion.ConsolaApp;
+
 public class MenuPrincipal  extends JFrame{
 	
 	private JLabel lblTitulo;
@@ -16,6 +18,7 @@ public class MenuPrincipal  extends JFrame{
 	private JButton butIniciarSesionEstudiante;
 	private JButton butIniciarSesionProfesorCalificador;
 	private JButton butiniciarSesionProfesorCreador;
+	private JButton butCargarDatos;
 	
 	public MenuPrincipal() {
 		
@@ -30,13 +33,14 @@ public class MenuPrincipal  extends JFrame{
 		lblTitulo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new GridLayout(5, 1, 10, 10));
+		panelBotones.setLayout(new GridLayout(6, 1, 10, 10));
 		
 		butRegistrarEstudiante = new JButton("Registrar Como Estudiante");
 		butRegistrarProfesor = new JButton("Registrar Como Profesor");
 		butIniciarSesionEstudiante = new JButton("Iniciar Sesion Como Estudiante");
 		butIniciarSesionProfesorCalificador = new JButton("Iniciar Sesion Como Profesor Calificador");
 		butiniciarSesionProfesorCreador = new JButton("Iniciar Sesion Como Profesor Creador");
+		butCargarDatos = new JButton("Cargar datos al sistema");
 		
 		butRegistrarEstudiante.addActionListener(new ActionListener() {
 			
@@ -82,11 +86,22 @@ public class MenuPrincipal  extends JFrame{
 			}
 		});
 		
+		butCargarDatos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConsolaApp.cargarDatos();
+				JOptionPane.showMessageDialog(MenuPrincipal.this, "Carga de datos exitosa", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		});
+		
 		panelBotones.add(butRegistrarEstudiante);
 		panelBotones.add(butRegistrarProfesor);
 		panelBotones.add(butIniciarSesionEstudiante);
 		panelBotones.add(butIniciarSesionProfesorCalificador);
 		panelBotones.add(butiniciarSesionProfesorCreador);
+		panelBotones.add(butCargarDatos);
 		
 		add(lblTitulo, BorderLayout.NORTH);
 		add(panelBotones, BorderLayout.CENTER);

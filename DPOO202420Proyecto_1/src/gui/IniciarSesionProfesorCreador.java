@@ -17,6 +17,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import logica.Profesor;
+import presentacion.ConsolaApp;
+
 public class IniciarSesionProfesorCreador extends JFrame{
 	
 	private JLabel lblTitulo;
@@ -86,7 +89,35 @@ public class IniciarSesionProfesorCreador extends JFrame{
 	}
 	
 	private void iniciarSesion(){
-		JOptionPane.showMessageDialog(this, "Iniciar Sesion (Pendiente de Implementar)");
+		
+		String email = txtEmail.getText().trim();
+	    String contrasenia = new String(txtContrasenia.getPassword()).trim();
+
+	    
+	    if (email.isEmpty() || contrasenia.isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
+
+	    
+	    for (Profesor profesor : ConsolaApp.getProfesores()) {
+	        if (profesor.getEmail().equalsIgnoreCase(email)) {
+	            if (profesor.getContrasenia().equals(contrasenia)) {
+	                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso. Bienvenido(a), " + profesor.getNombre() + "!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	                
+	                MenuProfesorCreador menuCreador = new MenuProfesorCreador();
+	                menuCreador.setVisible(true);
+	                
+	                return; 
+	            } else {
+	                JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+	                return;
+	            }
+	        }
+	    }
+
+	    
+	    JOptionPane.showMessageDialog(this, "No se encuentra un profesor con ese email.", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	

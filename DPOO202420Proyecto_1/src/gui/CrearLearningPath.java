@@ -16,12 +16,10 @@ public class CrearLearningPath extends JFrame {
     private JLabel lblDescripcion;
     private JLabel lblObjetivos;
     private JLabel lblDificultad;
-
     private JTextField txtNombre;
     private JTextArea txtDescripcion;
     private JTextArea txtObjetivos;
     private JTextField txtDificultad;
-
     private JButton butCrear;
     private JButton butVolver;
 
